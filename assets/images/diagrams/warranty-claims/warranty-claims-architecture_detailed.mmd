@@ -1,0 +1,33 @@
+---
+config:
+  layout: elk
+---
+flowchart TB
+ subgraph Preparation["Preparation"]
+        CL["Cleaning"]
+        W["Warranty Records"]
+        EDA["Exploration"]
+  end
+ subgraph Modeling["Modeling"]
+        FIT["Fit Distributions<br>(Weibull/Gamma)"]
+        SIM["GRP Simulation<br>(TTFF + Subsequent)"]
+        PARM["Parameter Estimation"]
+        VAL["Validation / MSE"]
+  end
+    W --> CL
+    CL --> EDA
+    EDA --> FIT
+    FIT --> SIM
+    SIM --> PARM
+    PARM --> VAL
+    VAL --> FORE["Forecast Claims/Cost"]
+    FORE --> OUT["Excel/Reports"]
+    style W fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000
+    style CL fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000
+    style EDA fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000
+    style FIT fill:#e8f5e8,stroke:#388e3c,stroke-width:2px,color:#000
+    style SIM fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000
+    style PARM fill:#e8f5e8,stroke:#388e3c,stroke-width:2px,color:#000
+    style VAL fill:#fff3e0,stroke:#f57c00,stroke-width:2px,color:#000
+    style FORE fill:#fff3e0,stroke:#f57c00,stroke-width:2px,color:#000
+    style OUT fill:#06b6d4,stroke:#06b6d4,stroke-width:2px,color:#fff

@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Avik Biswas | Principal Data Scientist Portfolio</title>
+    <meta name="description" content="Principal Data Scientist. I build predictive models and analytics for IoT/Telematics to drive measurable impact across fleets and enterprises.">
+    <link rel="canonical" href="https://[your-portfolio-url]/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Avik Biswas | Principal Data Scientist Portfolio">
+    <meta property="og:description" content="AI/ML, IoT/Telematics, predictive modeling, and analytics leadership. Explore projects, experience, and resume.">
+    <meta property="og:url" content="https://[your-portfolio-url]/">
+    <meta property="og:image" content="assets/images/profile_pic.jpeg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <meta name="theme-color" content="#06b6d4">
+    
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'Poppins', 'Space Grotesk', 'ui-sans-serif', 'system-ui'],
+            },
+            colors: {
+              accent: '#06b6d4',
+              accent2: '#6366f1',
+            },
+            boxShadow: {
+              glass: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+            },
+            backdropBlur: {
+              sm: '4px',
+              md: '8px',
+              lg: '16px',
+            },
+          },
+        },
+      }
+    </script>
+    
+    <!-- Additional Libraries -->
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    
+    <style>
+        /* Enhanced CSS Variables */
+        :root {
+          --accent: #06b6d4;
+          --accent2: #6366f1;
+          --bg-dark: #0f172a;
+          --bg-light: #f8fafc;
+          --text-light: #f1f5f9;
+          --text-dark: #1e293b;
+        }
+        
+        /* Smooth scrolling */
+        html { 
+          scroll-behavior: smooth; 
+        }
+        
+        /* Theme transitions */
+        body {
+          background: var(--bg-dark);
+          color: var(--text-light);
+          transition: background 0.3s, color 0.3s;
+        }
+        
+        body.light {
+          background: var(--bg-light);
+          color: var(--text-dark);
+        }
+        
+        body.dark {
+          background: var(--bg-dark);
+          color: var(--text-light);
+        }
+        
+        /* Dynamic analytics background */
+        #bg-visuals { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+        .viz { position: absolute; opacity: 0.14; filter: saturate(1.05) contrast(1.05) brightness(1.05); }
+        .viz svg { display: block; }
+        @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+        @keyframes driftX { 0% { transform: translateX(0); } 100% { transform: translateX(40px); } }
+        @keyframes rotateSlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        /* Enhanced animations */
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+        
+        .animate-fadeInUp {
+          animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .animate-scaleIn {
+          animation: scaleIn 0.4s ease-out;
+        }
+        
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
+
+        /* Blinking green border animation */
+        @keyframes blinkBorder {
+          0%, 50% { border-color: #10b981; box-shadow: 0 0 0 4px #10b981, 0 0 20px #10b981; }
+          51%, 100% { border-color: #06b6d4; box-shadow: 0 0 0 4px #06b6d4, 0 0 20px #06b6d4; }
+        }
+        
+        .profile-pic-blink {
+          box-sizing: border-box;
+          width: 12rem;
+          height: 12rem;
+          animation: blinkBorder 2s infinite;
+        }
+        
+        /* Loading states */
+
+        /* Ensure proper page scaling */
+        html {
+          zoom: 1;
+          -webkit-text-size-adjust: 100%;
+          -ms-text-size-adjust: 100%;
+        }
+        
+        body {
+          zoom: 1;
+          -webkit-text-size-adjust: 100%;
+          -ms-text-size-adjust: 100%;
+        }
+        .loading {
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .loading::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+          animation: loading 1.5s infinite;
+        }
+        
+        @keyframes loading {
+          0% { left: -100%; }
+          100% { left: 100%; }
+        }
+        
+        /* Accessibility improvements */
+        .focus-visible:focus {
+          outline: 2px solid #06b6d4;
+          outline-offset: 2px;
+        }
+        
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+          *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+          }
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+          background: rgba(255, 255, 255, 0.1);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+          background: linear-gradient(to bottom, var(--accent), var(--accent2));
+          border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(to bottom, var(--accent2), var(--accent));
+        }
+    </style>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG0CDFQBDS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TG0CDFQBDS');
+    </script>
+    
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "u4d4un89eb");
+    </script>
+</head>
+
+<body class="dark min-h-screen font-sans text-gray-200">
+    <div id="bg-visuals" aria-hidden="true"></div>
+    <!-- Enhanced Navigation -->
+    <nav class="site-nav w-full flex items-center justify-between py-4 px-4 bg-gray-900/95 backdrop-blur-lg shadow-lg sticky top-0 z-50 border-b border-gray-800/50">
+        <a class="text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-accent to-accent2 text-transparent bg-clip-text hover:scale-105 transition-transform" href="./index.html" aria-label="Home">
+            Avik Biswas
+        </a>
+        <button id="nav-toggle" class="md:hidden px-3 py-2 rounded-lg bg-gray-800 text-white" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div id="nav-links" class="hidden md:flex items-center gap-2 md:gap-4">
+            <a class="text-sm md:text-base font-semibold text-accent2 hover:text-accent transition-colors px-3 py-2 rounded-lg hover:bg-white/10" href="public/about.html">About</a>
+            <a class="text-sm md:text-base font-semibold text-accent2 hover:text-accent transition-colors px-3 py-2 rounded-lg hover:bg-white/10" href="#projects">Projects</a>
+            <a class="text-sm md:text-base font-semibold text-accent2 hover:text-accent transition-colors px-3 py-2 rounded-lg hover:bg-white/10" href="#experience">Experience</a>
+            <a class="text-sm md:text-base font-semibold text-accent2 hover:text-accent transition-colors px-3 py-2 rounded-lg hover:bg-white/10" href="public/contact.html">Contact</a>
+            <a class="text-sm md:text-base font-semibold text-accent2 hover:text-accent transition-colors px-3 py-2 rounded-lg hover:bg-white/10" href="public/fun-zone.html">Tech Playground</a>
+            <!-- Theme toggle removed; dark theme fixed -->
+            <a class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-accent to-accent2 text-white rounded-lg font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all text-sm md:text-base" href="https://www.linkedin.com/in/avik-biswas-stats" target="_blank" rel="noopener" data-gtm="linkedin">
+                <i class="fab fa-linkedin"></i>
+                LinkedIn
+            </a>
+        </div>
+    </nav>
+
+    <!-- Enhanced Hero Section -->
+    <section class="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" id="hero-section">
+        <!-- Animated background pattern -->
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%236366f1\" fill-opacity=\"0.08\"%3E%3Ccircle cx=\"7\" cy=\"7\" r=\"1\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 w-full">
+            <div class="grid lg:grid-cols-2 gap-10 items-center">
+                <!-- Left: Copy -->
+                <div class="hero-copy text-center lg:text-left">
+                    <h1 id="hero-headline" class="text-5xl md:text-6xl font-extrabold mb-4 animate-fadeInUp" style="animation-delay: 0.1s;">
+                        Principal Data Scientist — AI/ML for telematics and analytics
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 mb-6 animate-fadeInUp" style="animation-delay: 0.25s;">
+                        I build predictive models and analytics for IoT/Telematics to drive measurable impact across fleets and enterprises.
+                    </p>
+                    <div class="text-accent2 text-lg mb-6" aria-live="polite">
+                        <span class="mr-2">Roles:</span>
+                        <span id="role-rotator" class="font-semibold"></span>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center animate-fadeInUp" style="animation-delay: 0.35s;">
+                        <button id="view-work-btn" class="group px-6 py-3 bg-gradient-to-r from-accent to-accent2 text-white rounded-xl font-bold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300" data-gtm="see_my_projects">
+                            <span class="flex items-center gap-2">
+                                See My Projects
+                                <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                            </span>
+                        </button>
+                        <a href="assets/Avik%20Biswas_Resume_V2.pdf" download="Avik_Biswas_Principal_Data_Scientist_Resume.pdf" class="px-6 py-3 border-2 border-accent text-accent rounded-xl font-bold hover:bg-accent hover:text-white transition-all duration-300" data-gtm="download_resume">
+                            <i class="fas fa-download mr-2"></i>
+                            Download Resume
+                        </a>
+                    </div>
+                    <!-- Skill tags -->
+                    <div class="mt-6 flex flex-wrap gap-2 justify-center lg:justify-start" aria-label="Skills">
+                        <span class="px-3 py-1 bg-accent/20 text-accent rounded-full text-sm">Telematics Analytics</span>
+                        <span class="px-3 py-1 bg-accent2/20 text-accent2 rounded-full text-sm">Cloud (AWS)</span>
+                        <span class="px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-sm">Predictive Modeling</span>
+                        <span class="px-3 py-1 bg-fuchsia-500/20 text-fuchsia-300 rounded-full text-sm">Deep Learning (CNN/LSTM)</span>
+                    </div>
+                    <!-- Scroll hint -->
+                    <button id="scroll-hint" class="mt-10 inline-flex items-center gap-2 text-gray-400 hover:text-accent transition-colors" aria-label="Scroll to projects" data-gtm="scroll_hint">
+                        <i class="fas fa-circle-down animate-float"></i>
+                        <span>Scroll to see projects</span>
+                    </button>
+                </div>
+                <!-- Right: Portrait -->
+                <div class="flex justify-center lg:justify-end">
+                        <img src="assets/images/profile_pic.jpeg" alt="Portrait of Avik Biswas" width="384" height="384" loading="eager" fetchpriority="high" decoding="async" class="w-56 h-56 md:w-72 md:h-72 rounded-full border-8 border-accent shadow-2xl object-cover profile-pic-blink" />
+                </div>
+            </div>
+            <!-- Stats -->
+            <div id="stats-section" class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 animate-fadeInUp" style="animation-delay: 0.5s;">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-accent" data-count="15">0</div>
+                    <div class="text-gray-400">Years Experience</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-accent2" data-count="15">0</div>
+                    <div class="text-gray-400">Projects Completed</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-accent" data-count="5">0</div>
+                    <div class="text-gray-400">Major Platforms</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-accent2" data-count="10">0</div>
+                    <div class="text-gray-400">TB Data Processed</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Currently Working On -->
+    <section class="py-10 px-4 bg-gradient-to-b from-gray-800 to-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <div class="glass rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center gap-6">
+                <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 text-white flex items-center justify-center text-2xl">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-xl font-bold text-white mb-1">Currently Working On: C6 Insights (Climate & Fleet Optimization)</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Building analytics for fuel economy, utilization scoring, and ROI scenario modelling to help fleets reduce spend and emissions. Implementing anomaly detection to improve data reliability (~30%) and a replacement optimization engine that unlocks multi-million dollar savings annually.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Summary Section -->
+    <section class="py-20 px-4 bg-gradient-to-b from-gray-800 to-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-accent to-accent2 text-transparent bg-clip-text">
+                Professional Summary
+            </h2>
+            <div class="glass rounded-2xl p-8 max-w-4xl mx-auto">
+                <p class="text-lg text-gray-300 leading-relaxed text-center">
+                    Principal Data Scientist with 15+ years in AI/ML, telematics, and advanced analytics. I build predictive models and signal analytics that power fleet decisions—EV range and battery health, driver behaviour insights, anomaly detection, and ROI modelling. I adopt GenAI (LLMs/RAG) within ML workflows for faster exploration, better explainability, and improved productivity—delivering outcomes like multi‑million dollar savings and ~30% data accuracy gains.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Competencies Section -->
+    <section class="py-20 px-4 bg-gradient-to-b from-gray-900 to-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-accent to-accent2 text-transparent bg-clip-text">
+                Core Competencies
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- ML & AI -->
+                <div class="glass rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center text-white text-2xl mr-4">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Machine Learning & AI</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 text-sm rounded-full">Predictive Modeling</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 text-sm rounded-full">Anomaly Detection</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 text-sm rounded-full">Clustering (K-Means, GMM)</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 text-sm rounded-full">Deep Learning (CNN/LSTM)</span>
+                    </div>
+                </div>
+
+                <!-- Telematics & IoT Analytics -->
+                <div class="glass rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center text-white text-2xl mr-4">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Telematics & IoT Analytics</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-green-500/20 text-green-300 text-sm rounded-full">OBD-II/EV Signals</span>
+                        <span class="px-3 py-1 bg-green-500/20 text-green-300 text-sm rounded-full">Driver Behaviour</span>
+                        <span class="px-3 py-1 bg-green-500/20 text-green-300 text-sm rounded-full">Terrain/Road Conditions</span>
+                        <span class="px-3 py-1 bg-green-500/20 text-green-300 text-sm rounded-full">Fleet Scoring</span>
+                    </div>
+                </div>
+
+                <!-- Technical Stack -->
+                <div class="glass rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center text-white text-2xl mr-4">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Technical Stack</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-yellow-500/20 text-yellow-300 text-sm rounded-full">Python</span>
+                        <span class="px-3 py-1 bg-yellow-500/20 text-yellow-300 text-sm rounded-full">Pandas/Numpy/Scikit-learn</span>
+                        <span class="px-3 py-1 bg-yellow-500/20 text-yellow-300 text-sm rounded-full">TensorFlow/Keras</span>
+                        <span class="px-3 py-1 bg-yellow-500/20 text-yellow-300 text-sm rounded-full">R / R-Shiny / Dash</span>
+                    </div>
+                </div>
+
+                <!-- Analytics & Optimization -->
+                <div class="glass rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-lg flex items-center justify-center text-white text-2xl mr-4">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Analytics & Optimization</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-purple-500/20 text-purple-300 text-sm rounded-full">Forecasting/Time Series</span>
+                        <span class="px-3 py-1 bg-purple-500/20 text-purple-300 text-sm rounded-full">Linear Programming</span>
+                        <span class="px-3 py-1 bg-purple-500/20 text-purple-300 text-sm rounded-full">ROI/Payback Modeling</span>
+                    </div>
+                </div>
+
+                <!-- ML & AI -->
+                <div class="glass rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-rose-500 rounded-lg flex items-center justify-center text-white text-2xl mr-4">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">ML & AI</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-pink-500/20 text-pink-300 text-sm rounded-full">TensorFlow</span>
+                        <span class="px-3 py-1 bg-pink-500/20 text-pink-300 text-sm rounded-full">PyTorch</span>
+                        <span class="px-3 py-1 bg-pink-500/20 text-pink-300 text-sm rounded-full">Feature Engineering</span>
+                        <span class="px-3 py-1 bg-pink-500/20 text-pink-300 text-sm rounded-full">Predictive Analytics</span>
+                        <span class="px-3 py-1 bg-pink-500/20 text-pink-300 text-sm rounded-full">LangChain</span>
+                        <span class="px-3 py-1 bg-pink-500/20 text-pink-300 text-sm rounded-full">HuggingFace</span>
+                        <span class="px-3 py-1 bg-pink-500/20 text-pink-300 text-sm rounded-full">RAG</span>
+                    </div>
+                </div>
+
+                <!-- MLOps & Productization -->
+                <div class="glass rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-lg flex items-center justify-center text-white text-2xl mr-4">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">MLOps & Productization</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-teal-500/20 text-teal-300 text-sm rounded-full">Model & Prompt Deployment</span>
+                        <span class="px-3 py-1 bg-teal-500/20 text-teal-300 text-sm rounded-full">Model Monitoring</span>
+                        <span class="px-3 py-1 bg-teal-500/20 text-teal-300 text-sm rounded-full">Data/Concept Drift</span>
+                        <span class="px-3 py-1 bg-teal-500/20 text-teal-300 text-sm rounded-full">Prompt/Experiment Tracking</span>
+                    </div>
+                </div>
+
+                <!-- Leadership -->
+                <div class="glass rounded-2xl p-6 hover:scale-105 transition-all duration-300 md:col-span-2 lg:col-span-3">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 rounded-lg flex items-center justify-center text-white text-2xl mr-4">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Leadership</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-red-500/20 text-red-300 text-sm rounded-full">Mentoring</span>
+                        <span class="px-3 py-1 bg-red-500/20 text-red-300 text-sm rounded-full">Team Scaling</span>
+                        <span class="px-3 py-1 bg-red-500/20 text-red-300 text-sm rounded-full">Agile/Scrum Practices</span>
+                        <span class="px-3 py-1 bg-red-500/20 text-red-300 text-sm rounded-full">Stakeholder Collaboration</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Highlights Section -->
+    <section class="py-20 px-4 bg-gradient-to-b from-gray-800 to-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-accent to-accent2 text-transparent bg-clip-text">
+                Leadership Highlights
+            </h2>
+            
+            <div class="space-y-8">
+                <div class="glass rounded-2xl p-6 flex items-start gap-6">
+                    <div class="w-16 h-16 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white text-2xl flex-shrink-0">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Team Scaling & Development</h3>
+                        <p class="text-gray-300">Scaled engineering team from 3 → 12 members across multiple domains and geographies. Mentored and coached 8 engineers, with 3 promotions to senior roles under direct guidance.</p>
+                    </div>
+                </div>
+
+                <div class="glass rounded-2xl p-6 flex items-start gap-6">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center text-white text-2xl flex-shrink-0">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Cost Optimization</h3>
+                        <p class="text-gray-300">Drove AWS cost optimization, reducing annual spend by $36k (25–30%).</p>
+                    </div>
+                </div>
+
+                <div class="glass rounded-2xl p-6 flex items-start gap-6">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center text-white text-2xl flex-shrink-0">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">MLOps & Model Monitoring</h3>
+                        <p class="text-gray-300">Established CI for models, automated validation/monitoring, and governance to reduce production issues by 50%.</p>
+                    </div>
+                </div>
+
+                <div class="glass rounded-2xl p-6 flex items-start gap-6">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full flex items-center justify-center text-white text-2xl flex-shrink-0">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Modeling Excellence</h3>
+                        <p class="text-gray-300">Shipped predictive analytics with strong validation/QA, improving decision accuracy by ~40%.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section class="py-20 px-4 bg-gradient-to-b from-gray-900 to-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-accent to-accent2 text-transparent bg-clip-text">Highlights</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass rounded-2xl p-6">
+                    <div class="w-12 h-12 rounded-lg bg-accent/20 text-accent flex items-center justify-center mb-3">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-2">Telematics Analytics</h3>
+                    <p class="text-sm text-gray-300">OBD‑II, EV health, driver behavior, and road condition insights.</p>
+                </div>
+                <div class="glass rounded-2xl p-6">
+                    <div class="w-12 h-12 rounded-lg bg-accent2/20 text-accent2 flex items-center justify-center mb-3">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-2">Predictive Modeling</h3>
+                    <p class="text-sm text-gray-300">Regression, classification, clustering, time series, optimization.</p>
+                </div>
+                <div class="glass rounded-2xl p-6">
+                    <div class="w-12 h-12 rounded-lg bg-emerald-500/20 text-emerald-300 flex items-center justify-center mb-3">
+                        <i class="fas fa-diagram-project"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-2">Deep Learning</h3>
+                    <p class="text-sm text-gray-300">CNN/LSTM for signal analytics and road surface classification.</p>
+                </div>
+                <div class="glass rounded-2xl p-6">
+                    <div class="w-12 h-12 rounded-lg bg-fuchsia-500/20 text-fuchsia-300 flex items-center justify-center mb-3">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="font-semibold text-white mb-2">Business Impact</h3>
+                    <p class="text-sm text-gray-300">$4M+ annual savings enablement, 30% data accuracy gains, improved fleet reliability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 bg-gradient-to-b from-gray-900 to-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-accent to-accent2 text-transparent bg-clip-text">
+                Featured Projects
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- DeepView Analytics -->
+                <div class="group relative bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 cursor-pointer" data-project="deepview">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="assets/images/diagrams/deep-view-analytics/deep-view-analytics-architecture_overview.png" loading="lazy" decoding="async"
+                             alt="Deep View Analytics" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        
+                        <!-- Tech Stack Badges -->
+                        <div class="absolute top-4 right-4 flex flex-wrap gap-1">
+                            <span class="px-2 py-1 bg-accent text-white text-xs rounded-full">Python</span>
+                            <span class="px-2 py-1 bg-rose-500 text-white text-xs rounded-full">CNN</span>
+                            <span class="px-2 py-1 bg-green-500 text-white text-xs rounded-full">Anomaly Detection</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">DeepView Analytics</h3>
+                        <p class="text-gray-300 text-sm mb-4">Telematics analytics platform for vehicle health, driver behaviour, and EV insights.</p>
+                        
+                        <div class="flex justify-between items-center text-xs text-gray-400 mb-4">
+                            <span>Role: Principal Data Scientist</span>
+                            <span>Duration: 2018–2024</span>
+                        </div>
+                        
+                        <div class="flex gap-2">
+                            <button class="flex-1 py-2 bg-accent/20 text-accent rounded-lg hover:bg-accent hover:text-white transition-colors" onclick="openProjectModal('deepview')">
+                                View Details
+                            </button>
+                            <button class="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors" onclick="window.location.href='public/project-deep-view-analytics.html'">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute inset-0 bg-gradient-to-t from-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                </div>
+                
+                <!-- C6 Insights (Climate & Fleet Optimization) -->
+                <div class="group relative bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 cursor-pointer" data-project="c6insights">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="assets/images/diagrams/c6-insights/c6-insights-architecture_overview.png" loading="lazy" decoding="async"
+                             alt="C6 Insights" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        
+                        <div class="absolute top-4 right-4 flex flex-wrap gap-1">
+                            <span class="px-2 py-1 bg-orange-500 text-white text-xs rounded-full">Python</span>
+                            <span class="px-2 py-1 bg-blue-500 text-white text-xs rounded-full">Scikit‑learn</span>
+                            <span class="px-2 py-1 bg-green-500 text-white text-xs rounded-full">Optimization</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">C6 Insights</h3>
+                        <p class="text-gray-300 text-sm mb-4">Fuel economy, utilization scoring, ROI modelling; multi‑million $ savings enablement.</p>
+                        
+                        <div class="flex justify-between items-center text-xs text-gray-400 mb-4">
+                            <span>Role: Principal Data Scientist</span>
+                            <span>Duration: 2024–Present</span>
+                        </div>
+                        
+                        <div class="flex gap-2">
+                            <button class="flex-1 py-2 bg-accent/20 text-accent rounded-lg hover:bg-accent hover:text-white transition-colors" onclick="openProjectModal('c6insights')">
+                                View Details
+                            </button>
+                            <button class="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors" onclick="window.location.href='public/project-c6-insights.html'">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- EV Analytics (Range & Battery Health) -->
+                <div class="group relative bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 cursor-pointer" data-project="evanalytics">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="assets/images/diagrams/ev-analytics/ev-analytics-architecture_overview.png" loading="lazy" decoding="async"
+                             alt="EV Analytics" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        
+                        <div class="absolute top-4 right-4 flex flex-wrap gap-1">
+                            <span class="px-2 py-1 bg-yellow-500 text-white text-xs rounded-full">Python</span>
+                            <span class="px-2 py-1 bg-amber-500 text-white text-xs rounded-full">Regression</span>
+                            <span class="px-2 py-1 bg-green-500 text-white text-xs rounded-full">Time Series</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">EV Analytics</h3>
+                        <p class="text-gray-300 text-sm mb-4">EV range prediction and battery health modelling for proactive maintenance.</p>
+                        
+                        <div class="flex justify-between items-center text-xs text-gray-400 mb-4">
+                            <span>Role: Principal Data Scientist</span>
+                            <span>Duration: 2018–2024</span>
+                        </div>
+                        
+                        <div class="flex gap-2">
+                            <button class="flex-1 py-2 bg-accent/20 text-accent rounded-lg hover:bg-accent hover:text-white transition-colors" onclick="openProjectModal('evanalytics')">
+                                View Details
+                            </button>
+                            <button class="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors" onclick="window.location.href='public/project-ev-analytics.html'">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- NPS Text Analytics -->
+                <div class="group relative bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 cursor-pointer" data-project="nps">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="assets/images/diagrams/nps-text-analytics/nps-text-analytics-architecture_overview.png" loading="lazy" decoding="async"
+                             alt="NPS Text Analytics" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        
+                        <div class="absolute top-4 right-4 flex flex-wrap gap-1">
+                            <span class="px-2 py-1 bg-indigo-500 text-white text-xs rounded-full">TF‑IDF</span>
+                            <span class="px-2 py-1 bg-blue-500 text-white text-xs rounded-full">SVM</span>
+                            <span class="px-2 py-1 bg-green-500 text-white text-xs rounded-full">Random Forest</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">NPS Text Analytics</h3>
+                        <p class="text-gray-300 text-sm mb-4">Classified "Recommend" vs "Improve" comments to drive CX improvements.</p>
+                        
+                        <div class="flex justify-between items-center text-xs text-gray-400 mb-4">
+                            <span>Role: Senior Data Scientist</span>
+                            <span>Duration: 2014–2018</span>
+                        </div>
+                        
+                        <div class="flex gap-2">
+                            <button class="flex-1 py-2 bg-accent/20 text-accent rounded-lg hover:bg-accent hover:text-white transition-colors" onclick="openProjectModal('nps')">
+                                View Details
+                            </button>
+                            <button class="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors" onclick="window.location.href='public/project-nps-text-analytics.html'">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Warranty Claims Prediction -->
+                <div class="group relative bg-white/10 backdrop-blur-lg rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 cursor-pointer" data-project="warranty">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="assets/images/diagrams/warranty-claims/warranty-claims-architecture_overview.png" loading="lazy" decoding="async"
+                             alt="Warranty Claims Prediction" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        
+                        <div class="absolute top-4 right-4 flex flex-wrap gap-1">
+                            <span class="px-2 py-1 bg-green-600 text-white text-xs rounded-full">GRP</span>
+                            <span class="px-2 py-1 bg-amber-600 text-white text-xs rounded-full">Weibull</span>
+                            <span class="px-2 py-1 bg-purple-600 text-white text-xs rounded-full">Monte Carlo</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Warranty Claims Prediction</h3>
+                        <p class="text-gray-300 text-sm mb-4">GRP-based tool to forecast claims and cost; simplified, higher-accuracy outcomes.</p>
+                        
+                        <div class="flex justify-between items-center text-xs text-gray-400 mb-4">
+                            <span>Role: Senior Data Scientist</span>
+                            <span>Duration: 2014–2018</span>
+                        </div>
+                        
+                        <div class="flex gap-2">
+                            <button class="flex-1 py-2 bg-accent/20 text-accent rounded-lg hover:bg-accent hover:text-white transition-colors" onclick="openProjectModal('warranty')">
+                                View Details
+                            </button>
+                            <button class="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors" onclick="window.location.href='public/project-warranty-claims.html'">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Snapshot -->
+    <section id="experience" class="py-20 px-4 bg-gradient-to-b from-gray-800 to-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-accent to-accent2 text-transparent bg-clip-text">Experience Snapshot</h2>
+            <ol class="relative border-l border-gray-700">
+                <li class="mb-10 ml-6">
+                    <span class="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-accent text-white"><i class="fas fa-briefcase text-xs"></i></span>
+                    <h3 class="text-xl font-semibold text-white">Principal Data Scientist — Darby Telematics</h3>
+                    <time class="mb-1 text-sm text-gray-400">Apr 2024 – Present</time>
+                    <p class="text-gray-300 text-sm">C6 Insights: Built fuel economy models, utilization scoring, anomaly detection (~30% data accuracy gain), and a replacement optimization engine enabling multi-million dollar savings annually. Delivered ROI scenario modelling and integrated analytics directly in-platform.</p>
+                </li>
+                <li class="mb-10 ml-6">
+                    <span class="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-accent2 text-white"><i class="fas fa-building text-xs"></i></span>
+                    <h3 class="text-xl font-semibold text-white">Principal Data Scientist — Danlaw Inc.</h3>
+                    <time class="mb-1 text-sm text-gray-400">Oct 2018 – Mar 2024</time>
+                    <p class="text-gray-300 text-sm">DeepView Analytics: Built CNN-based road surface classifier, EV range & battery health models, SOC-based charge/discharge classification, Mahalanobis anomaly detection for vehicle health, and fuel pilferage detection. Delivered interactive dashboards with R‑Shiny/Dash to improve fleet decision-making.</p>
+                </li>
+                <li class="mb-10 ml-6">
+                    <span class="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-accent text-white"><i class="fas fa-briefcase text-xs"></i></span>
+                    <h3 class="text-xl font-semibold text-white">Senior Data Scientist — Tata Consultancy Services</h3>
+                    <time class="mb-1 text-sm text-gray-400">May 2010 – Oct 2018</time>
+                    <p class="text-gray-300 text-sm">Built NPS comment classifiers, anomaly detection for manufacturing, warranty claims predictor using GRP, and AR disputes text-mining. Delivered Excel-based automation (Lean Six Sigma Green Belt): 92% TAT reduction, ~85% accuracy improvement (~$57k savings across MEAP).</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Let's Connect CTA -->
+    <section class="py-20 px-4 bg-gradient-to-b from-gray-900 to-gray-800">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-accent to-accent2 text-transparent bg-clip-text">Let's Connect</h2>
+            <p class="text-gray-300 mb-8">Open to principal/lead data science and analytics roles. Happy to chat.</p>
+            <div class="flex items-center justify-center gap-4">
+                <a href="mailto:aviksagi@gmail.com" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-accent text-white font-semibold hover:opacity-90 transition" data-gtm="email_cta" aria-label="Email">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+                <a href="https://linkedin.com/in/avik-biswas-stats" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-accent2 text-white font-semibold hover:opacity-90 transition" data-gtm="linkedin_cta" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gray-800 text-white font-semibold hover:bg-gray-700 transition" data-gtm="github_cta" aria-label="GitHub">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI & ML Initiatives Subsection -->
+    <section class="py-20 px-4 bg-gradient-to-b from-gray-800 to-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-accent to-accent2 text-transparent bg-clip-text">
+                AI & ML Initiatives
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Generative AI -->
+                <div class="glass rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center text-white text-2xl mr-4">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Generative AI</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-purple-500/20 text-purple-300 text-sm rounded-full">LangChain</span>
+                        <span class="px-3 py-1 bg-purple-500/20 text-purple-300 text-sm rounded-full">HuggingFace</span>
+                        <span class="px-3 py-1 bg-purple-500/20 text-purple-300 text-sm rounded-full">RAG</span>
+                        <span class="px-3 py-1 bg-purple-500/20 text-purple-300 text-sm rounded-full">ChatGPT</span>
+                        <span class="px-3 py-1 bg-purple-500/20 text-purple-300 text-sm rounded-full">Claude</span>
+                    </div>
+                </div>
+
+                <!-- Predictive Analytics -->
+                <div class="glass rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center text-white text-2xl mr-4">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Predictive Analytics</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 text-sm rounded-full">Vehicle Health</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 text-sm rounded-full">Inventory Optimization</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 text-sm rounded-full">Driver Behavior</span>
+                        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 text-sm rounded-full">Anomaly Detection</span>
+                    </div>
+                </div>
+
+                <!-- Deep Learning -->
+                <div class="glass rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center text-white text-2xl mr-4">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Deep Learning</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-green-500/20 text-green-300 text-sm rounded-full">TensorFlow</span>
+                        <span class="px-3 py-1 bg-green-500/20 text-green-300 text-sm rounded-full">PyTorch</span>
+                        <span class="px-3 py-1 bg-green-500/20 text-green-300 text-sm rounded-full">Computer Vision</span>
+                        <span class="px-3 py-1 bg-green-500/20 text-green-300 text-sm rounded-full">OpenCV</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="py-20 px-4 bg-gradient-to-b from-gray-900 to-gray-800">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-accent to-accent2 text-transparent bg-clip-text">
+                Education
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Master's Degree -->
+                <div class="glass rounded-2xl p-8 hover:scale-105 transition-all duration-300">
+                    <div class="flex items-start gap-6">
+                        <div class="w-16 h-16 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white text-2xl flex-shrink-0">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-2">M.Sc. Statistics</h3>
+                            <p class="text-accent font-semibold mb-2">University of Madras, Chennai</p>
+                            <p class="text-gray-300 mb-2">2008 – 2010</p>
+                            <p class="text-gray-400 text-sm">Advanced statistical methods, predictive modelling, and analytics.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bachelor's Degree -->
+                <div class="glass rounded-2xl p-8 hover:scale-105 transition-all duration-300">
+                    <div class="flex items-start gap-6">
+                        <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center text-white text-2xl flex-shrink-0">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-2">B.Sc. Statistics (Hons.)</h3>
+                            <p class="text-green-400 font-semibold mb-2">Calcutta University, Kolkata</p>
+                            <p class="text-gray-300 mb-2">2003 – 2006</p>
+                            <p class="text-gray-400 text-sm">Statistical foundations applied to real‑world analytics problems.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="bg-gray-900/95 backdrop-blur-lg border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div class="md:col-span-2">
+                    <h3 class="text-2xl font-bold bg-gradient-to-r from-accent to-accent2 text-transparent bg-clip-text mb-4">
+                        Avik Biswas
+                    </h3>
+                    <p class="text-gray-400 mb-4 max-w-md">
+                        Principal Data Scientist passionate about building AI/ML solutions for telematics and analytics with measurable business impact.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://linkedin.com/in/avik-biswas-stats" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <i class="fab fa-linkedin text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <i class="fab fa-github text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="public/about.html" class="text-gray-400 hover:text-accent transition-colors">About Me</a></li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-accent transition-colors">Projects</a></li>
+                        <li><a href="public/contact.html" class="text-gray-400 hover:text-accent transition-colors">Contact</a></li>
+                        <li><a href="public/fun-zone.html" class="text-gray-400 hover:text-accent transition-colors">Tech Playground</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Get In Touch</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:aviksagi@gmail.com" class="hover:text-accent transition-colors">
+                                aviksagi@gmail.com
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+918095706732" class="hover:text-accent transition-colors">
+                                +91-8095706732
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bengaluru, India</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-800 pt-8 mt-8 text-center">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">
+                        © 2025 Avik Biswas. Built with ❤️ using modern web technologies.
+                    </p>
+                    <div class="flex gap-4 mt-4 md:mt-0">
+                        <a href="assets/Avik%20Biswas_Resume_V2.pdf" download="Avik_Biswas_Principal_Data_Scientist_Resume.pdf" class="text-accent hover:text-accent2 text-sm transition-colors" data-gtm="download_resume_footer">
+                            <i class="fas fa-download mr-1"></i>Download Resume
+                        </a>
+                        <span class="text-gray-600">|</span>
+                        <button id="scroll-to-top" class="text-accent hover:text-accent2 text-sm transition-colors">
+                            <i class="fas fa-arrow-up mr-1"></i>Back to Top
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Details Modal -->
+    <div id="project-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm hidden">
+        <div class="bg-gray-900 rounded-2xl max-w-4xl max-h-[90vh] overflow-y-auto p-8 m-4 w-full">
+            <div class="flex justify-between items-center mb-6">
+                <h2 id="modal-title" class="text-2xl font-bold text-white">Project Details</h2>
+                <button id="close-modal" class="text-gray-400 hover:text-white">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="modal-content" class="text-white">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced JavaScript -->
+    <script>
+        // Unified Theme Management
+        (function() {
+            'use strict';
+            
+            // Local variable to track current theme
+            let currentTheme = 'dark';
+            
+            // Theme configuration
+            const themeConfig = {
+                light: {
+                    bodyClass: 'light',
+                    icon: 'fas fa-moon',
+                    nextTheme: 'dark'
+                },
+                dark: {
+                    bodyClass: 'dark', 
+                    icon: 'fas fa-sun',
+                    nextTheme: 'light'
+                }
+            };
+            
+            // Apply theme function
+            function applyTheme(theme) {
+                if (!themeConfig[theme]) return;
+                
+                const body = document.body;
+                const btn = document.getElementById('globalThemeToggle');
+                
+                // Remove all theme classes
+                Object.values(themeConfig).forEach(config => {
+                    body.classList.remove(config.bodyClass);
+                });
+                
+                // Apply new theme
+                body.classList.add(themeConfig[theme].bodyClass);
+                currentTheme = theme;
+                
+                // Update button icon
+                if (btn) {
+                    btn.innerHTML = `<i class="${themeConfig[theme].icon}"></i>`;
+                }
+                
+                // Save to localStorage
+                localStorage.setItem('theme', theme);
+            }
+            
+            // Toggle theme function
+            function toggleTheme() {
+                const newTheme = themeConfig[currentTheme].nextTheme;
+                applyTheme(newTheme);
+            }
+            
+            // Initialize theme
+            function initTheme() {
+                applyTheme('dark');
+                
+                // Add click listener to theme button
+                const themeBtn = document.getElementById('globalThemeToggle');
+                if (themeBtn) {
+                    themeBtn.addEventListener('click', toggleTheme);
+                }
+            }
+            
+            // Initialize when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initTheme);
+            } else {
+                initTheme();
+            }
+            
+            // Make functions globally available for debugging
+            window.themeManager = {
+                applyTheme,
+                toggleTheme,
+                getCurrentTheme: () => currentTheme
+            };
+        })();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animated counters with improved logic
+            let countersAnimated = false;
+
+            function animateCounters() {
+                if (countersAnimated) return; // Prevent multiple animations
+                countersAnimated = true;
+                
+                const counters = document.querySelectorAll('[data-count]');
+                counters.forEach(counter => {
+                    const target = parseInt(counter.dataset.count);
+                    const duration = 2000; // 2 seconds
+                    const startTime = performance.now();
+                    
+                    function updateCounter(currentTime) {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        
+                        // Easing function for smooth animation
+                        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                        const current = Math.floor(target * easeOutQuart);
+                        
+                        counter.textContent = current;
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target; // Ensure final value is exact
+                        }
+                    }
+                    
+                    requestAnimationFrame(updateCounter);
+                });
+            }
+
+            // Intersection Observer for stats section
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !countersAnimated) {
+                        animateCounters();
+                    }
+                });
+            }, { threshold: 0.5 }); // Trigger when 50% of the element is visible
+
+            // Observe the stats section
+            const statsSection = document.getElementById('stats-section');
+            if (statsSection) {
+                statsObserver.observe(statsSection);
+            }
+
+            // Keep the existing general observer for other animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fadeInUp');
+                    }
+                });
+            });
+
+            // Observe elements for animation
+            document.querySelectorAll('[data-animate]').forEach(el => {
+                observer.observe(el);
+            });
+            // Observe elements for animation
+            document.querySelectorAll('[data-animate]').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Project card interactions
+            document.querySelectorAll('[data-project]').forEach(card => {
+                card.addEventListener('click', function() {
+                    const project = this.dataset.project;
+                    openProjectModal(project);
+                });
+            });
+
+            // View work button -> scroll to projects
+            const viewWorkBtn = document.getElementById('view-work-btn');
+            const projectsAnchor = document.getElementById('projects');
+            if (viewWorkBtn && projectsAnchor) {
+                viewWorkBtn.addEventListener('click', function() {
+                    projectsAnchor.scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+
+            // Scroll to top
+            const scrollToTopBtn = document.getElementById('scroll-to-top');
+            if (scrollToTopBtn) {
+                scrollToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // Project data for modals
+            function getProjectData(projectId) {
+                const projects = {
+                    deepview: {
+                        title: "Deep View Analytics",
+                        content: `
+                            <div class="space-y-6">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <img src="assets/images/diagrams/deep-view-analytics/deep-view-analytics-architecture_overview.png" 
+                                         alt="Deep View Analytics" 
+                                         class="w-32 h-32 rounded-lg object-cover">
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-white mb-2">Deep View Analytics</h3>
+                                        <p class="text-gray-300 mb-2">Telematics platform for vehicle health, driver behaviour, and EV insights</p>
+                                        <div class="flex gap-2">
+                                            <span class="px-3 py-1 bg-accent text-white text-sm rounded-full">Python</span>
+                                            <span class="px-3 py-1 bg-rose-500 text-white text-sm rounded-full">CNN</span>
+                                            <span class="px-3 py-1 bg-green-500 text-white text-sm rounded-full">Anomaly Detection</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-accent mb-3">Project Overview</h4>
+                                        <p class="text-gray-300 mb-4">A comprehensive analytics platform designed to process and analyze massive amounts of data in real-time. The system handles over 10 million data points daily, providing insights for automotive and marketing sectors.</p>
+                                        <h4 class="text-lg font-semibold text-accent mb-3">Key Features</h4>
+                                        <ul class="text-gray-300 space-y-2">
+                                            <li>• CNN-based road surface classification from accelerometer/speed</li>
+                                            <li>• EV range and battery health modelling; SOC charge/discharge classification</li>
+                                            <li>• Mahalanobis-based anomaly detection; fuel pilferage detection</li>
+                                            <li>• R‑Shiny/Dash dashboards for fleet health and utilization</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-accent mb-3">Technical Details</h4>
+                                        <div class="space-y-3">
+                                            <div>
+                                                <span class="text-gray-400">Role:</span>
+                                                <span class="text-white ml-2">Principal Data Scientist</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Duration:</span>
+                                                <span class="text-white ml-2">Oct 2018 – Mar 2024</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Team Size:</span>
+                                                <span class="text-white ml-2">Data Science + Engineering</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Data Volume:</span>
+                                                <span class="text-white ml-2">High-frequency OBD‑II/EV signals</span>
+                                            </div>
+                                        </div>
+                                        <div class="mt-6">
+                                            <a href="public/project-deep-view-analytics.html" 
+                                               class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-accent to-accent2 text-white rounded-lg font-bold hover:shadow-xl transition-all">
+                                                <i class="fas fa-external-link-alt"></i>
+                                                View Full Project
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    c6insights: {
+                        title: "C6 Insights (Climate & Fleet Optimization)",
+                        content: `
+                            <div class="space-y-6">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <img src="assets/images/diagrams/c6-insights/c6-insights-architecture_overview.png" 
+                                         alt="C6 Insights" 
+                                         class="w-32 h-32 rounded-lg object-cover">
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-white mb-2">C6 Insights</h3>
+                                        <p class="text-gray-300 mb-2">Climate tech and fleet optimization analytics</p>
+                                        <div class="flex gap-2">
+                                            <span class="px-3 py-1 bg-orange-500 text-white text-sm rounded-full">Python</span>
+                                            <span class="px-3 py-1 bg-green-500 text-white text-sm rounded-full">Scikit‑learn</span>
+                                            <span class="px-3 py-1 bg-blue-500 text-white text-sm rounded-full">Optimization</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-accent mb-3">Project Overview</h4>
+                                        <p class="text-gray-300 mb-4">Built fuel economy models, utilization scoring, anomaly detection (~30% data accuracy), and a replacement optimization engine enabling multi‑million $ savings per year. Delivered ROI scenario modelling to evaluate strategies in one place.</p>
+                                        <h4 class="text-lg font-semibold text-accent mb-3">Key Features</h4>
+                                        <ul class="text-gray-300 space-y-2">
+                                            <li>• Fuel economy & driver behaviour insights</li>
+                                            <li>• Fleet utilization scoring and benchmarking</li>
+                                            <li>• ROI/Payback scenario modelling</li>
+                                            <li>• Replacement optimization engine</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-accent mb-3">Technical Details</h4>
+                                        <div class="space-y-3">
+                                            <div>
+                                                <span class="text-gray-400">Role:</span>
+                                                <span class="text-white ml-2">Principal Data Scientist</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Duration:</span>
+                                                <span class="text-white ml-2">Apr 2024 – Present</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Team Size:</span>
+                                                <span class="text-white ml-2">Cross‑functional</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Client:</span>
+                                                <span class="text-white ml-2">Enterprise Fleets</span>
+                                            </div>
+                                        </div>
+                                        <div class="mt-6">
+                                            <a href="public/project-c6-insights.html" 
+                                               class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-accent to-accent2 text-white rounded-lg font-bold hover:shadow-xl transition-all">
+                                                <i class="fas fa-external-link-alt"></i>
+                                                View Full Project
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    evanalytics: {
+                        title: "EV Analytics",
+                        content: `
+                            <div class="space-y-6">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <img src="assets/images/diagrams/ev-analytics/ev-analytics-architecture_overview.png" 
+                                         alt="EV Analytics" 
+                                         class="w-32 h-32 rounded-lg object-cover">
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-white mb-2">EV Analytics</h3>
+                                        <p class="text-gray-300 mb-2">EV range prediction and battery health modelling</p>
+                                        <div class="flex gap-2">
+                                            <span class="px-3 py-1 bg-orange-500 text-white text-sm rounded-full">Python</span>
+                                            <span class="px-3 py-1 bg-yellow-500 text-white text-sm rounded-full">Regression</span>
+                                            <span class="px-3 py-1 bg-green-500 text-white text-sm rounded-full">Time Series</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-accent mb-3">Project Overview</h4>
+                                        <p class="text-gray-300 mb-4">Regression-based EV range prediction incorporating battery capacity, speed, terrain, and temperature. EV battery health model enabling proactive maintenance and reduced downtime.</p>
+                                        <h4 class="text-lg font-semibold text-accent mb-3">Key Features</h4>
+                                        <ul class="text-gray-300 space-y-2">
+                                            <li>• EV range prediction models</li>
+                                            <li>• Battery health scoring</li>
+                                            <li>• SOC-based charge/discharge classification</li>
+                                            <li>• Fleet-level performance benchmarking</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-accent mb-3">Technical Details</h4>
+                                        <div class="space-y-3">
+                                            <div>
+                                                <span class="text-gray-400">Role:</span>
+                                                <span class="text-white ml-2">Principal Data Scientist</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Duration:</span>
+                                                <span class="text-white ml-2">2018 – 2024</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Team Size:</span>
+                                                <span class="text-white ml-2">Data Science</span>
+                                            </div>
+                                        </div>
+                                        <div class="mt-6">
+                                            <a href="public/project-ev-analytics.html" 
+                                               class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-accent to-accent2 text-white rounded-lg font-bold hover:shadow-xl transition-all">
+                                                <i class="fas fa-external-link-alt"></i>
+                                                View Full Project
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    nps: {
+                        title: "NPS Text Analytics",
+                        content: `
+                            <div class="space-y-6">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <img src="assets/images/diagrams/nps-text-analytics/nps-text-analytics-architecture_overview.png" 
+                                         alt="NPS Text Analytics" 
+                                         class="w-32 h-32 rounded-lg object-cover">
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-white mb-2">NPS Text Analytics</h3>
+                                        <p class="text-gray-300 mb-2">Text classification of customer comments</p>
+                                        <div class="flex gap-2">
+                                            <span class="px-3 py-1 bg-blue-600 text-white text-sm rounded-full">SVM</span>
+                                            <span class="px-3 py-1 bg-orange-500 text-white text-sm rounded-full">Random Forest</span>
+                                            <span class="px-3 py-1 bg-green-500 text-white text-sm rounded-full">TF‑IDF</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-accent mb-3">Project Overview</h4>
+                                        <p class="text-gray-300 mb-4">Built a TF‑IDF‑based text classifier with SVM/RF to categorize comments into “Recommend” and “Improve” themes, enabling targeted CX actions. Delivered interactive Excel dashboards.</p>
+                                        <h4 class="text-lg font-semibold text-accent mb-3">Key Features</h4>
+                                        <ul class="text-gray-300 space-y-2">
+                                            <li>• Text preprocessing and taxonomy creation</li>
+                                            <li>• TF‑IDF features with SVM/RF</li>
+                                            <li>• Sentiment analysis and theme tagging</li>
+                                            <li>• Dynamic Excel dashboard for business users</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-accent mb-3">Technical Details</h4>
+                                        <div class="space-y-3">
+                                            <div>
+                                                <span class="text-gray-400">Role:</span>
+                                                <span class="text-white ml-2">Senior Data Scientist</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Duration:</span>
+                                                <span class="text-white ml-2">2014 – 2018</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Team Size:</span>
+                                                <span class="text-white ml-2">Analytics</span>
+                                            </div>
+                                        </div>
+                                        <div class="mt-6">
+                                            <a href="public/project-nps-text-analytics.html" 
+                                               class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-accent to-accent2 text-white rounded-lg font-bold hover:shadow-xl transition-all">
+                                                <i class="fas fa-external-link-alt"></i>
+                                                View Full Project
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    },
+                    warranty: {
+                        title: "Warranty Claims Prediction",
+                        content: `
+                            <div class="space-y-6">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <img src="assets/images/diagrams/warranty-claims/warranty-claims-architecture_overview.png" 
+                                         alt="Warranty Claims Prediction" 
+                                         class="w-32 h-32 rounded-lg object-cover">
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-white mb-2">Warranty Claims Prediction</h3>
+                                        <p class="text-gray-300 mb-2">GRP-based claims and cost forecasting tool</p>
+                                        <div class="flex gap-2">
+                                            <span class="px-3 py-1 bg-green-500 text-white text-sm rounded-full">GRP</span>
+                                            <span class="px-3 py-1 bg-green-500 text-white text-sm rounded-full">Weibull/Gamma</span>
+                                            <span class="px-3 py-1 bg-purple-500 text-white text-sm rounded-full">Monte Carlo</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-accent mb-3">Project Overview</h4>
+                                        <p class="text-gray-300 mb-4">Developed a generalized renewal process-based predictor to estimate expected claims and costs over the warranty period. Simplified tooling and improved accuracy vs legacy predictors.</p>
+                                        <h4 class="text-lg font-semibold text-accent mb-3">Key Features</h4>
+                                        <ul class="text-gray-300 space-y-2">
+                                            <li>• Distribution fitting (Weibull/Gamma) and parameter estimation</li>
+                                            <li>• Monte Carlo simulation for TTFF and subsequent failures</li>
+                                            <li>• Accuracy improvements vs legacy baseline</li>
+                                            <li>• Business-friendly outputs and reporting</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-accent mb-3">Technical Details</h4>
+                                        <div class="space-y-3">
+                                            <div>
+                                                <span class="text-gray-400">Role:</span>
+                                                <span class="text-white ml-2">Senior Data Scientist</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Duration:</span>
+                                                <span class="text-white ml-2">2014 – 2018</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Team Size:</span>
+                                                <span class="text-white ml-2">Analytics</span>
+                                            </div>
+                                        </div>
+                                        <div class="mt-6">
+                                            <a href="public/project-warranty-claims.html" 
+                                               class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-accent to-accent2 text-white rounded-lg font-bold hover:shadow-xl transition-all">
+                                                <i class="fas fa-external-link-alt"></i>
+                                                View Full Project
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    }
+                };
+                return projects[projectId] || { title: "Project Not Found", content: "<p>Project details not available.</p>" };
+            }
+
+            // Modal functionality
+            const modalContent = document.getElementById("modal-content");
+            const modal = document.getElementById('project-modal');
+            const closeModal = document.getElementById('close-modal');
+            function openProjectModal(projectId) {
+                console.log("Opening modal for project:", projectId);
+                const projectData = getProjectData(projectId);
+                document.getElementById("modal-title").textContent = projectData.title;
+                modalContent.innerHTML = projectData.content;
+                modal.classList.remove("hidden");
+                document.body.style.overflow = "hidden";
+            }
+
+            function closeProjectModal() {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+
+            if (closeModal) {
+                closeModal.addEventListener('click', closeProjectModal);
+            }
+
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeProjectModal();
+                    }
+                });
+            }
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeProjectModal();
+                }
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Mobile navigation toggle
+            const navToggle = document.getElementById('nav-toggle');
+            const navLinks = document.getElementById('nav-links');
+            if (navToggle && navLinks) {
+                navToggle.addEventListener('click', () => {
+                    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+                    navToggle.setAttribute('aria-expanded', String(!expanded));
+                    navLinks.classList.toggle('hidden');
+                });
+                // Close on Esc when open
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && !navLinks.classList.contains('hidden')) {
+                        navLinks.classList.add('hidden');
+                        navToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+
+            // Scroll hint -> scroll to projects
+            const scrollHint = document.getElementById('scroll-hint');
+            if (scrollHint && projectsAnchor) {
+                scrollHint.addEventListener('click', () => projectsAnchor.scrollIntoView({ behavior: 'smooth' }));
+                let hintVisible = true;
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 100 && hintVisible) {
+                        scrollHint.style.opacity = '0';
+                        hintVisible = false;
+                    }
+                });
+            }
+
+            // Sticky nav shadow on scroll
+            const siteNav = document.querySelector('.site-nav');
+            if (siteNav) {
+                const onScroll = () => {
+                    if (window.scrollY > 10) {
+                        siteNav.classList.add('shadow-2xl');
+                    } else {
+                        siteNav.classList.remove('shadow-2xl');
+                    }
+                };
+                window.addEventListener('scroll', onScroll);
+                onScroll();
+            }
+
+            // CTA analytics using data-gtm
+            document.querySelectorAll('[data-gtm]').forEach(el => {
+                el.addEventListener('click', () => {
+                    const label = el.getAttribute('data-gtm');
+                    if (window.gtag) {
+                        gtag('event', 'cta_click', { event_category: 'engagement', label });
+                    }
+                    // console fallback
+                    try { console.log('CTA Click', label); } catch (_) {}
+                });
+            });
+
+            // A/B testing for hero headline
+            const heroHeadline = document.getElementById('hero-headline');
+            try {
+                if (heroHeadline) {
+                    const abKey = 'heroVariant';
+                    let variant = localStorage.getItem(abKey);
+                    if (!variant) {
+                        variant = Math.random() < 0.5 ? 'A' : 'B';
+                        localStorage.setItem(abKey, variant);
+                    }
+                    if (variant === 'A') {
+                        heroHeadline.textContent = 'Principal Data Scientist — Turning telematics into real‑world intelligence';
+                    } else {
+                        heroHeadline.textContent = 'I build AI/ML solutions that power data‑driven decisions';
+                    }
+                    if (window.gtag) {
+                        gtag('event', 'hero_variant_shown', { event_category: 'ab_testing', label: variant });
+                    }
+                }
+            } catch (_) {}
+
+            // Rotating role titles (respect reduced motion)
+            try {
+                const roleTarget = document.getElementById('role-rotator');
+                const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (roleTarget) {
+                const roles = ['Principal Data Scientist', 'Telematics & IoT Analytics', 'Predictive Modeling', 'Deep Learning (CNN/LSTM)'];
+                    let idx = 0;
+                    const setRole = () => { roleTarget.textContent = roles[idx]; };
+                    setRole();
+                    if (!reduceMotion) {
+                        setInterval(() => { idx = (idx + 1) % roles.length; setRole(); }, 2500);
+                    }
+                }
+            } catch (_) {}
+        });
+    </script>
+    <script>
+        // Dynamic background visuals (bars, lines, pies)
+        (function () {
+            const root = document.getElementById('bg-visuals');
+            if (!root) return;
+            const W = window.innerWidth, H = window.innerHeight;
+            const ACCENT = '#06b6d4', ACCENT2 = '#6366f1', LAV = '#a78bfa';
+            function rnd(min, max){ return Math.random() * (max - min) + min; }
+            function place(node, size){
+                node.style.left = `${rnd(-0.05*W, 0.9*W)}px`;
+                node.style.top = `${rnd(-0.05*H, 0.9*H)}px`;
+                node.style.animation = `floatY ${rnd(6,10)}s ease-in-out ${rnd(0,3)}s infinite`;
+                node.style.transformOrigin = 'center';
+                node.style.willChange = 'transform, opacity';
+                node.style.opacity = `${rnd(0.10, 0.18)}`;
+                node.style.width = `${size}px`;
+                node.style.height = 'auto';
+            }
+            function barChart(width=140, height=90){
+                const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+                svg.setAttribute('viewBox',`0 0 ${width} ${height}`);
+                const bars = [height*0.35,height*0.7,height*0.5,height*0.9];
+                const colors = [ACCENT,'#38bdf8',ACCENT2,LAV];
+                bars.forEach((h,i)=>{
+                    const r = document.createElementNS(svg.namespaceURI,'rect');
+                    r.setAttribute('x', String(10 + i*30));
+                    r.setAttribute('y', String(height - h));
+                    r.setAttribute('width','18');
+                    r.setAttribute('height', String(h));
+                    r.setAttribute('rx','3');
+                    r.setAttribute('fill', colors[i%colors.length]);
+                    r.setAttribute('opacity','0.9');
+                    svg.appendChild(r);
+                });
+                return svg;
+            }
+            function lineChart(width=160, height=80){
+                const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+                svg.setAttribute('viewBox',`0 0 ${width} ${height}`);
+                const grid = document.createElementNS(svg.namespaceURI,'path');
+                grid.setAttribute('d',`M0 ${height-1} H ${width}`);
+                grid.setAttribute('stroke','rgba(255,255,255,0.12)');
+                grid.setAttribute('fill','none');
+                svg.appendChild(grid);
+                const pts = [
+                    [10,height-10],[40, height-30],[70,height-22],[100,height-45],[130,height-28],[150,height-52]
+                ].map(p=>p.join(',')).join(' ');
+                const pl = document.createElementNS(svg.namespaceURI,'polyline');
+                pl.setAttribute('points', pts);
+                pl.setAttribute('fill','none');
+                pl.setAttribute('stroke', ACCENT2);
+                pl.setAttribute('stroke-width','3');
+                pl.setAttribute('stroke-linecap','round');
+                pl.setAttribute('stroke-linejoin','round');
+                svg.appendChild(pl);
+                const end = document.createElementNS(svg.namespaceURI,'circle');
+                end.setAttribute('cx','150');
+                end.setAttribute('cy', String(height-52));
+                end.setAttribute('r','4');
+                end.setAttribute('fill','#ffffff');
+                end.setAttribute('opacity','0.9');
+                svg.appendChild(end);
+                return svg;
+            }
+            function pieChart(size=100){
+                const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+                svg.setAttribute('viewBox','0 0 100 100');
+                const cx=50, cy=50, r=34, circ = 2*Math.PI*r;
+                function seg(color, frac, rot){
+                    const c = document.createElementNS(svg.namespaceURI,'circle');
+                    c.setAttribute('cx', cx); c.setAttribute('cy', cy); c.setAttribute('r', r);
+                    c.setAttribute('fill','none');
+                    c.setAttribute('stroke', color);
+                    c.setAttribute('stroke-width','12');
+                    c.setAttribute('stroke-dasharray', `${circ*frac} ${circ}`);
+                    c.setAttribute('transform',`rotate(${rot} ${cx} ${cy})`);
+                    c.setAttribute('stroke-linecap','round');
+                    return c;
+                }
+                svg.appendChild(seg(ACCENT, 0.35, -90));
+                svg.appendChild(seg(ACCENT2, 0.28, 36));
+                svg.appendChild(seg(LAV, 0.20, 137));
+                return svg;
+            }
+            const total = 12;
+            for (let i=0;i<total;i++){
+                const wrap = document.createElement('div');
+                wrap.className = 'viz';
+                const kind = i % 3;
+                let node;
+                if (kind===0) node = barChart();
+                else if (kind===1) node = lineChart();
+                else node = pieChart();
+                wrap.appendChild(node);
+                place(wrap, rnd(110, 180));
+                // occasional rotation/drift
+                if (kind===2) wrap.style.animation += `, rotateSlow ${rnd(24,36)}s linear ${rnd(0,5)}s infinite`;
+                root.appendChild(wrap);
+            }
+            // Subtle global drift
+            root.style.animation = `driftX 40s ease-in-out infinite alternate`;
+            window.addEventListener('resize', ()=>{ root.style.animation = 'none'; setTimeout(()=> root.style.animation = `driftX 40s ease-in-out infinite alternate`, 0); });
+        })();
+    </script>
+</body>
+</html>

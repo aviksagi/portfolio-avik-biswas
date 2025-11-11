@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C6 Insights (Climate & Fleet Optimization) | Avik Biswas Portfolio</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon.svg">
+    <meta name="theme-color" content="#06b6d4">
+
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: { accent: '#06b6d4', accent2: '#6366f1' },
+          },
+        },
+      }
+    </script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+
+    <style>
+        :root { --accent: #06b6d4; --accent2: #6366f1; --bg-dark: #0f172a; --text-light: #f1f5f9; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--bg-dark); color: var(--text-light); }
+        /* Analytics-themed background overlay */
+        body { position: relative; }
+        body::before {
+          content: '';
+          position: fixed;
+          inset: 0;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cdefs%3E%3Cpattern id='grid' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Cpath d='M80 0 L0 0 0 80' fill='none' stroke='%23ffffff' stroke-opacity='0.05' stroke-width='1'/%3E%3C/pattern%3E%3ClinearGradient id='lineGrad' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0%25' stop-color='%2306b6d4' stop-opacity='0.5'/%3E%3Cstop offset='100%25' stop-color='%236366f1' stop-opacity='0.5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)'/%3E%3Cpolyline points='100,700 300,600 450,650 600,520 800,560 1000,430 1200,480 1400,360' fill='none' stroke='url(%23lineGrad)' stroke-width='3' stroke-opacity='0.4'/%3E%3Crect x='220' y='620' width='40' height='80' fill='%2306b6d4' fill-opacity='0.35'/%3E%3Crect x='260' y='580' width='40' height='120' fill='%236366f1' fill-opacity='0.35'/%3E%3Crect x='300' y='540' width='40' height='160' fill='%23a78bfa' fill-opacity='0.35'/%3E%3Ccircle cx='1000' cy='430' r='5' fill='%23ffffff' fill-opacity='0.6'/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          opacity: 0.08;
+          pointer-events: none;
+          z-index: 0;
+        }
+        .glass { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); }
+        /* Mermaid centering and controls */
+        .mermaid { display:block; margin:0 auto; height:auto; max-width:100%; background:transparent !important; }
+        .mermaid svg { max-width:100% !important; height:auto !important; }
+        .diagram-container { position: relative; background: transparent; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 16px; display:flex; justify-content:center; align-items:flex-start; overflow:auto; }
+        .diagram-controls { position: absolute; top: 10px; right: 10px; display: flex; gap: 8px; z-index: 10; }
+        .diagram-control-btn { background: rgba(0,0,0,0.6); color:#fff; border:none; border-radius:6px; padding:8px 10px; cursor:pointer; transition: all .2s ease; }
+        .diagram-control-btn:hover { background: rgba(6,182,212,.85); transform: scale(1.05); }
+        .diagram-zoom { transform-origin: top left; transition: transform .25s ease; display:inline-block; max-width:100%; width:100%; }
+        .diagram-fullscreen { position: fixed; inset: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,.95); z-index: 1000; display:flex; justify-content:center; align-items:center; padding: 20px; }
+        .close-fullscreen { position: fixed; top: 16px; left: 16px; background: rgba(239,68,68,.9); color:#fff; border:none; border-radius:6px; padding:8px 12px; cursor:pointer; z-index: 1001; }
+        /* Analytics-themed background overlay */
+        body { position: relative; }
+        body::before {
+          content: '';
+          position: fixed;
+          inset: 0;
+          background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cdefs%3E%3Cpattern id='grid' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Cpath d='M80 0 L0 0 0 80' fill='none' stroke='%23ffffff' stroke-opacity='0.05' stroke-width='1'/%3E%3C/pattern%3E%3ClinearGradient id='lineGrad' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0%25' stop-color='%2306b6d4' stop-opacity='0.5'/%3E%3Cstop offset='100%25' stop-color='%236366f1' stop-opacity='0.5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)'/%3E%3Cpolyline points='100,700 300,600 450,650 600,520 800,560 1000,430 1200,480 1400,360' fill='none' stroke='url(%23lineGrad)' stroke-width='3' stroke-opacity='0.4'/%3E%3Crect x='220' y='620' width='40' height='80' fill='%2306b6d4' fill-opacity='0.35'/%3E%3Crect x='260' y='580' width='40' height='120' fill='%236366f1' fill-opacity='0.35'/%3E%3Crect x='300' y='540' width='40' height='160' fill='%23a78bfa' fill-opacity='0.35'/%3E%3Ccircle cx='1000' cy='430' r='5' fill='%23ffffff' fill-opacity='0.6'/%3E%3C/svg%3E\");
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          opacity: 0.15;
+          pointer-events: none;
+          z-index: 1;
+          mix-blend-mode: soft-light;
+        }
+    </style>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG0CDFQBDS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TG0CDFQBDS');
+    </script>
+    
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "u4d4un89eb");
+    </script>
+</head>
+
+<body class="dark min-h-screen font-sans text-gray-200">
+    <!-- Navigation -->
+    <nav class="w-full flex items-center justify-between py-4 px-4 bg-gray-900/95 backdrop-blur-lg shadow-lg sticky top-0 z-50 border-b border-gray-800/50">
+        <a class="text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-accent to-accent2 text-transparent bg-clip-text hover:scale-105 transition-transform" href="../index.html">
+            Avik Biswas
+        </a>
+        <div class="flex items-center gap-2 md:gap-4">
+            <a class="text-sm md:text-base font-semibold text-accent2 hover:text-accent transition-colors px-3 py-2 rounded-lg hover:bg-white/10" href="about.html">About Me</a>
+            <a class="text-sm md:text-base font-semibold text-accent2 hover:text-accent transition-colors px-3 py-2 rounded-lg hover:bg-white/10" href="contact.html">Contact</a>
+            <a class="text-sm md:text-base font-semibold text-accent2 hover:text-accent transition-colors px-3 py-2 rounded-lg hover:bg-white/10" href="fun-zone.html">Tech Playground</a>
+            <a class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-accent to-accent2 text-white rounded-lg font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all text-sm md:text-base" href="https://www.linkedin.com/in/avik-biswas-stats" target="_blank" rel="noopener">
+                <i class="fab fa-linkedin"></i>
+                LinkedIn
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <section class="mb-10">
+            <h1 class="text-4xl md:text-5xl font-extrabold uppercase bg-gradient-to-r from-accent to-accent2 text-transparent bg-clip-text mb-4 drop-shadow-lg">C6 INSIGHTS</h1>
+            <p class="text-lg md:text-xl text-gray-300 mb-6 max-w-2xl">Climate tech and fleet optimization analytics: fuel economy, utilization scoring, anomaly detection, and strategy simulation that reduce spend and emissions.</p>
+        </section>
+
+        <section class="grid md:grid-cols-2 gap-10 mb-10 items-start">
+            <div>
+                <h2 class="uppercase text-accent font-bold text-lg mb-2 tracking-wide">Designation</h2>
+                <div class="inline-block bg-gradient-to-r from-accent to-accent2 text-white px-4 py-2 rounded-lg font-semibold shadow-glass">Principal Data Scientist</div>
+            </div>
+            <div>
+                <h2 class="uppercase text-accent font-bold text-lg mb-2 tracking-wide">Technologies</h2>
+                <div class="flex flex-wrap gap-3 mb-2">
+                    <span class="bg-gradient-to-r from-accent to-accent2 text-white px-3 py-1 rounded-full font-semibold text-sm shadow-glass">Python</span>
+                    <span class="bg-gradient-to-r from-accent to-accent2 text-white px-3 py-1 rounded-full font-semibold text-sm shadow-glass">Scikit‑learn</span>
+                    <span class="bg-gradient-to-r from-accent to-accent2 text-white px-3 py-1 rounded-full font-semibold text-sm shadow-glass">Optimization</span>
+                    <span class="bg-gradient-to-r from-accent to-accent2 text-white px-3 py-1 rounded-full font-semibold text-sm shadow-glass">Dash/R‑Shiny</span>
+                </div>
+            </div>
+            <div>
+                <h2 class="uppercase text-accent font-bold text-lg mb-2 tracking-wide">Role</h2>
+                <ul class="bg-gray-800/60 rounded-xl p-6 shadow-glass space-y-3 text-base">
+                    <li>Designed fuel economy models incorporating behaviour and terrain</li>
+                    <li>Built utilization scoring and fleet benchmarking</li>
+                    <li>Implemented anomaly detection to improve data reliability (~30%)</li>
+                    <li>Delivered ROI/Payback scenario modelling for fleet strategies</li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="uppercase text-accent font-bold text-lg mb-2 tracking-wide">Key Contributions & Impact</h2>
+                <ul class="bg-gray-800/60 rounded-xl p-6 shadow-glass space-y-3 text-base">
+                    <li>Replacement optimization engine enabling multi‑million $ annual savings</li>
+                    <li>Nonlinear depreciation (sigmoid) model for resale value estimation</li>
+                    <li>Platform‑integrated analytics for seamless customer workflows</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Architecture Diagrams & Technical Details -->
+        <section class="bg-gray-800/60 rounded-2xl shadow-glass p-8 mb-10">
+            <details class="group">
+                <summary class="cursor-pointer text-xl font-bold text-accent2 mb-4 select-none flex items-center gap-2">
+                    <span class="inline-block transition-transform duration-300 group-open:rotate-90">
+                        <svg class="w-5 h-5 text-accent2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                    </span>
+                    Architecture Diagrams & Technical Details
+                </summary>
+                <style>summary::-webkit-details-marker { display:none; }</style>
+                <div class="mt-4">
+                    <div class="flex justify-center mb-4 gap-2">
+                        <button class="px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white text-sm toggle-btn active" id="overview-btn" onclick="switchDiagram('overview')">Overview</button>
+                        <button class="px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white text-sm toggle-btn" id="detailed-btn" onclick="switchDiagram('detailed')">Detailed Architecture</button>
+                    </div>
+                    <h3 class="text-accent2 font-bold text-lg mb-4" id="diagram-title">Architecture Overview</h3>
+                    <div id="diagram-container" class="relative border border-white/20 rounded-lg p-4">
+                        <div class="text-center text-gray-400 py-10"><i class="fas fa-spinner fa-spin mr-2"></i>Loading architecture diagram...</div>
+                    </div>
+                </div>
+            </details>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900/95 backdrop-blur-lg border-t border-gray-800 mt-16">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-2xl font-bold bg-gradient-to-r from-accent to-accent2 text-transparent bg-clip-text mb-4">Avik Biswas</h3>
+                    <p class="text-gray-400 mb-4 max-w-md">Principal Data Scientist focused on AI/ML for telematics and analytics.</p>
+                    <div class="flex gap-4">
+                        <a href="https://linkedin.com/in/avik-biswas-stats" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform"><i class="fab fa-linkedin text-white"></i></a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:scale-110 transition-transform"><i class="fab fa-github text-white"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-accent transition-colors">About Me</a></li>
+                        <li><a href="../index.html#projects" class="text-gray-400 hover:text-accent transition-colors">Projects</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-accent transition-colors">Contact</a></li>
+                        <li><a href="fun-zone.html" class="text-gray-400 hover:text-accent transition-colors">Tech Playground</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Get In Touch</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center gap-2"><i class="fas fa-envelope"></i><a href="mailto:aviksagi@gmail.com" class="hover:text-accent transition-colors">aviksagi@gmail.com</a></li>
+                        <li class="flex items-center gap-2"><i class="fas fa-phone"></i><a href="tel:+918095706732" class="hover:text-accent transition-colors">+91-8095706732</a></li>
+                        <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt"></i><span>Bengaluru, India</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 mt-8 text-center">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">© 2025 Avik Biswas. Built with ❤️ using modern web technologies.</p>
+                    <div class="flex gap-4 mt-4 md:mt-0">
+                        <a href="../assets/Avik%20Biswas_Resume_V2.pdf" download class="text-accent hover:text-accent2 text-sm"><i class="fas fa-download mr-1"></i>Download Resume</a>
+                        <span class="text-gray-600">|</span>
+                        <button id="scroll-to-top" class="text-accent hover:text-accent2 text-sm"><i class="fas fa-arrow-up mr-1"></i>Back to Top</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let mermaidConfig = { startOnLoad: false, theme: 'dark', flowchart: { useMaxWidth: true, curve: 'basis', diagramPadding: 0 }, themeVariables: { primaryColor:'#06b6d4', primaryTextColor:'#f1f5f9', lineColor:'#6366f1' } };
+        let currentZoom = 1; let currentDiagramType = 'overview'; let isFullscreen = false;
+        mermaid.initialize(mermaidConfig);
+        const diagramFiles = {
+            overview: '../assets/images/diagrams/c6-insights/c6-insights-architecture_overview.mmd',
+            detailed: '../assets/images/diagrams/c6-insights/c6-insights-architecture_detailed.mmd'
+        };
+        function preprocessMermaid(text){ const fmMatch = text.startsWith('---')? text.match(/^---[\s\S]*?---\s*/m):null; if(fmMatch){ text = text.slice(fmMatch[0].length);} return text; }
+        async function loadDiagram(type='overview'){
+            try{
+                const res = await fetch(diagramFiles[type]);
+                const txt = preprocessMermaid(await res.text());
+                const init = `%%{init: ${JSON.stringify({ theme: mermaidConfig.theme, themeVariables: mermaidConfig.themeVariables, flowchart: mermaidConfig.flowchart })}}%%\n`;
+                const html = `
+                    <div class="diagram-zoom" id="diagram-zoom" style="transform: scale(${currentZoom});">
+                        <div class="mermaid">${init}${txt}</div>
+                    </div>
+                    <div class="diagram-controls">
+                        <button class="diagram-control-btn" onclick="zoomIn()" title="Zoom In"><i class="fas fa-search-plus"></i></button>
+                        <button class="diagram-control-btn" onclick="zoomOut()" title="Zoom Out"><i class="fas fa-search-minus"></i></button>
+                        <button class="diagram-control-btn" onclick="resetZoom()" title="Reset Zoom"><i class="fas fa-expand-arrows-alt"></i></button>
+                        <button class="diagram-control-btn" onclick="toggleFullscreen()" title="Fullscreen"><i class="fas fa-expand"></i></button>
+                    </div>`;
+                const c = document.getElementById('diagram-container'); c.innerHTML = html;
+                await mermaid.init();
+            } catch(e){ document.getElementById('diagram-container').innerHTML = '<div class="text-center text-red-400 py-6">Failed to load diagram</div>'; }
+        }
+        function switchDiagram(t){ currentDiagramType=t; document.getElementById('overview-btn').classList.toggle('active',t==='overview'); document.getElementById('detailed-btn').classList.toggle('active',t==='detailed'); document.getElementById('diagram-title').textContent = t==='overview'?'Architecture Overview':'Detailed Architecture'; loadDiagram(t); }
+        function zoomIn(){ currentZoom = Math.min(currentZoom*1.2, 3); updateZoom(); }
+        function zoomOut(){ currentZoom = Math.max(currentZoom/1.2, 0.5); updateZoom(); }
+        function resetZoom(){ currentZoom = 1; updateZoom(); }
+        function updateZoom(){ const dz = document.getElementById('diagram-zoom'); if(dz){ dz.style.transform = `scale(${currentZoom})`; } }
+        function toggleFullscreen(){
+            const container = document.getElementById('diagram-container');
+            const dz = document.getElementById('diagram-zoom');
+            if(!container||!dz) return;
+            if(!isFullscreen){
+                isFullscreen = true; container.classList.add('diagram-fullscreen'); dz.style.transform = 'scale(1)'; currentZoom = 1;
+                const closeBtn = document.createElement('button'); closeBtn.className='close-fullscreen'; closeBtn.innerHTML='<i class="fas fa-times"></i> Close'; closeBtn.onclick = toggleFullscreen; document.body.appendChild(closeBtn);
+            } else {
+                isFullscreen = false; container.classList.remove('diagram-fullscreen'); updateZoom();
+                const closeBtn = document.querySelector('.close-fullscreen'); if(closeBtn) closeBtn.remove();
+            }
+        }
+        document.addEventListener('DOMContentLoaded', ()=> loadDiagram('overview'));
+    </script>
+
+</body>
+</html>
+
+

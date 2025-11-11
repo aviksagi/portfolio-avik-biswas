@@ -1,0 +1,27 @@
+---
+layout: elk
+---
+flowchart LR
+    A[OBD‑II / EV / Trips / Weather] --> B[Ingestion & QC]
+    B --> C[Feature Engineering]
+    C --> D[(Feature Store)]
+    D --> E1{{Fuel Economy Model}}
+    D --> E2{{Utilization Scoring}}
+    D --> E3{{Anomaly Detection}}
+    E1 --> F[Insights API]
+    E2 --> F
+    E3 --> F
+    F --> G{ROI Simulator}
+    G --> H{{Replacement Optimizer}}
+    H --> I[Dash/R‑Shiny]
+    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000
+    style B fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000
+    style C fill:#e8f5e8,stroke:#388e3c,stroke-width:2px,color:#000
+    style D fill:#fff3e0,stroke:#f57c00,stroke-width:2px,color:#000
+    style E1 fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000
+    style E2 fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000
+    style E3 fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000
+    style F fill:#f1f8e9,stroke:#689f38,stroke-width:2px,color:#000
+    style G fill:#fce4ec,stroke:#c2185b,stroke-width:2px,color:#000
+    style H fill:#fff8e1,stroke:#f57f17,stroke-width:2px,color:#000
+    style I fill:#e0f2f1,stroke:#00796b,stroke-width:2px,color:#fff

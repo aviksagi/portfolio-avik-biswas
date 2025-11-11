@@ -1,0 +1,52 @@
+---
+config:
+  layout: elk
+---
+flowchart TB
+ subgraph Ingestion["Ingestion"]
+        P1["Preprocessing"]
+        S1["Telematics Stream"]
+        V1["Validation & QC"]
+  end
+ subgraph Features["Features"]
+        FE["Feature Engineering\n(speed, terrain, temp, driver)"]
+        FS[("Feature Store")]
+  end
+ subgraph Models["Models"]
+        M1{{"Fuel Economy"}}
+        M2{{"Utilization Score"}}
+        M3{{"Anomaly Detection"}}
+  end
+ subgraph Optimization["Optimization"]
+        RM{{"Resale Value Model"}}
+        INV["Inventory & Ageing"]
+        OPT["Replacement Optimization"]
+        SCEN{"ROI Scenarios"}
+  end
+    S1 --> P1
+    P1 --> V1
+    V1 --> FE
+    FE --> FS
+    FS --> M1 & M2 & M3
+    INV --> RM
+    M1 --> OPT
+    RM --> OPT
+    OPT --> SCEN
+    M2 --> API["Insights API"]
+    M3 --> API
+    SCEN --> UI["Dash/R‑Shiny"]
+    API --> UI
+    style S1 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000
+    style P1 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000
+    style V1 fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000
+    style FE fill:#e8f5e8,stroke:#388e3c,stroke-width:2px,color:#000
+    style FS fill:#e8f5e8,stroke:#388e3c,stroke-width:2px,color:#000
+    style M1 fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000
+    style M2 fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000
+    style M3 fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000
+    style INV fill:#fff3e0,stroke:#f57c00,stroke-width:2px,color:#000
+    style RM fill:#fff3e0,stroke:#f57c00,stroke-width:2px,color:#000
+    style OPT fill:#fff3e0,stroke:#f57c00,stroke-width:2px,color:#000
+    style SCEN fill:#fff3e0,stroke:#f57c00,stroke-width:2px,color:#000
+    style API fill:#f1f8e9,stroke:#689f38,stroke-width:2px,color:#000
+    style UI fill:#06b6d4,stroke:#06b6d4,stroke-width:2px,color:#fff

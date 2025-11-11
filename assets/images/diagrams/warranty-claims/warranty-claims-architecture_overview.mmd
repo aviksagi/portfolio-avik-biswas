@@ -1,0 +1,16 @@
+---
+config:
+  layout: elk
+---
+flowchart LR
+    A["Warranty History"] --> B["EDA & Cleaning"]
+    B --> C["Distribution Fitting<br>(Weibull/Gamma)"]
+    C --> D{{"GRP Simulator"}}
+    D --> E["Claims & Cost Forecast"]
+    E --> F["Reports / Dashboard"]
+    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#000
+    style B fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000
+    style C fill:#e8f5e8,stroke:#388e3c,stroke-width:2px,color:#000
+    style D fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000
+    style E fill:#fff3e0,stroke:#f57c00,stroke-width:2px,color:#000
+    style F fill:#06b6d4,stroke:#06b6d4,stroke-width:2px,color:#fff
