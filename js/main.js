@@ -119,9 +119,9 @@ function initABTesting() {
     const heroHeadline = document.getElementById('hero-headline');
     if (heroHeadline) {
         if (variant === 'A') {
-            heroHeadline.textContent = 'Principal Data Scientist — Turning telematics into real-world intelligence';
+            heroHeadline.textContent = 'Principal Data Scientist — AI/ML & Advanced Analytics';
         } else {
-            heroHeadline.textContent = 'I build AI/ML solutions that power data-driven decisions';
+            heroHeadline.textContent = 'Building AI/ML solutions that deliver measurable business value';
         }
 
         // Log variant for analytics
@@ -142,7 +142,7 @@ function initRoleRotator() {
         return; // Skip animation if user prefers reduced motion
     }
 
-    const roles = ['Principal Data Scientist', 'Telematics & IoT Analytics', 'Predictive Modeling'];
+    const roles = ['Data Scientist', 'Predictive Modeler', 'ML Engineer', 'GenAI Specialist'];
     let idx = 0;
 
     const roleElement = document.createElement('div');

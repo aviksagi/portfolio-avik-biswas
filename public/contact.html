@@ -45,91 +45,49 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon.svg">
     <meta name="theme-color" content="#06b6d4">
 
-
-    <!-- TailwindCSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'Poppins', 'Space Grotesk', 'ui-sans-serif', 'system-ui'],
-            },
-            colors: {
-              accent: '#06b6d4',
-              accent2: '#6366f1',
-            },
-            boxShadow: {
-              glass: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
-            },
-          },
-        },
-      }
-    </script>
-
-    <!-- Additional Libraries -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-
-    <style>
-        :root {
-          --accent: #06b6d4;
-          --accent2: #6366f1;
-          --bg-dark: #0f172a;
-          --bg-light: #f8fafc;
-          --text-light: #f1f5f9;
-          --text-dark: #1e293b;
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body { background: var(--bg-dark); color: var(--text-light); transition: background 0.3s, color 0.3s; }
-        body.light { background: var(--bg-light); color: var(--text-dark); }
-        body.dark { background: var(--bg-dark); color: var(--text-light); }
-        /* Analytics-themed background overlay */
-        body { position: relative; }
-        body::before {
-          content: '';
-          position: fixed;
-          inset: 0;
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cdefs%3E%3Cpattern id='grid' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Cpath d='M80 0 L0 0 0 80' fill='none' stroke='%23ffffff' stroke-opacity='0.05' stroke-width='1'/%3E%3C/pattern%3E%3ClinearGradient id='lineGrad' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0%25' stop-color='%2306b6d4' stop-opacity='0.5'/%3E%3Cstop offset='100%25' stop-color='%236366f1' stop-opacity='0.5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)'/%3E%3Cpolyline points='100,700 300,600 450,650 600,520 800,560 1000,430 1200,480 1400,360' fill='none' stroke='url(%23lineGrad)' stroke-width='3' stroke-opacity='0.4'/%3E%3Crect x='220' y='620' width='40' height='80' fill='%2306b6d4' fill-opacity='0.35'/%3E%3Crect x='260' y='580' width='40' height='120' fill='%236366f1' fill-opacity='0.35'/%3E%3Crect x='300' y='540' width='40' height='160' fill='%23a78bfa' fill-opacity='0.35'/%3E%3Ccircle cx='1000' cy='430' r='5' fill='%23ffffff' fill-opacity='0.6'/%3E%3C/svg%3E");
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: center;
-          opacity: 0.15;
-          pointer-events: none;
-          z-index: 1;
-          mix-blend-mode: soft-light;
-        }
-
-        .form-input { transition: all 0.2s ease; }
-        .form-input:focus { transform: translateY(-1px); box-shadow: 0 8px 25px rgba(6, 182, 212, 0.25); }
-
-        .message { display:none; }
-        .message.show { display:block; }
-
-        /* Strict, predictable two-column alignment */
-        .contact-grid { display:grid; grid-template-columns: 1fr; gap: 2rem; }
-        @media (min-width: 1024px) { .contact-grid { grid-template-columns: 1fr 1fr; gap: 3rem; align-items:start; } }
-        .contact-col { min-width:0; }
-    </style>
-    
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG0CDFQBDS"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6Y1JBT1EXB"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-TG0CDFQBDS');
+
+      gtag('config', 'G-6Y1JBT1EXB', {
+        debug_mode: true  // Enable debug mode for localhost testing
+      });
     </script>
-    
+
+    <!-- Microsoft Clarity -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "u4d4un89eb");
+        })(window, document, "clarity", "script", "t8hxb4v0kn");
     </script>
+
+    <!-- Centralized Theme Configuration -->
+    <script src="../js/theme-config.js"></script>
+    
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = window.tailwindConfig;
+    </script>
+
+    <!-- Centralized Styles -->
+    <link rel="stylesheet" href="../css/main.css">
+    
+    <!-- Theme Switcher Script -->
+    <script src="../js/theme-switcher.js"></script>
+    
+    <!-- Additional Libraries -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Page-specific styles for contact.html -->
+    <style>
+        /* Contact page specific styles - most styles are in centralized CSS */
+    </style>
 </head>
 
 <body class="dark min-h-screen font-sans text-gray-200">
@@ -138,109 +96,199 @@
         <a class="text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-accent to-accent2 text-transparent bg-clip-text hover:scale-105 transition-transform" href="../index.html">Avik Biswas</a>
         <div class="flex items-center gap-2 md:gap-4">
             <a class="text-sm md:text-base font-semibold text-accent2 hover:text-accent transition-colors px-3 py-2 rounded-lg hover:bg-white/10" href="about.html">About Me</a>
+            <a class="text-sm md:text-base font-semibold text-accent2 hover:text-accent transition-colors px-3 py-2 rounded-lg hover:bg-white/10" href="../index.html#projects">Projects</a>
             <a class="text-sm md:text-base font-semibold text-accent2 hover:text-accent transition-colors px-3 py-2 rounded-lg hover:bg-white/10" href="contact.html">Contact</a>
-            <a class="text-sm md:text-base font-semibold text-accent2 hover:text-accent transition-colors px-3 py-2 rounded-lg hover:bg-white/10" href="fun-zone.html">Tech Playground</a>
-            <!-- Theme toggle removed; dark theme fixed -->
+            <a class="text-sm md:text-base font-semibold text-accent2 hover:text-accent transition-colors px-3 py-2 rounded-lg hover:bg-white/10" href="tech-playground.html">Tech Playground</a>
             <a class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-accent to-accent2 text-white rounded-lg font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all text-sm md:text-base" href="https://www.linkedin.com/in/avik-biswas-stats" target="_blank" rel="noopener">
                 <i class="fab fa-linkedin"></i>
                 LinkedIn
             </a>
+            <!-- Theme Switcher -->
+            <div class="theme-switcher">
+                <button id="theme-switcher-btn" class="theme-switcher-btn" aria-label="Change theme" aria-expanded="false" aria-haspopup="true" onclick="toggleThemeDropdown()">
+                    <i id="current-theme-icon" class="fas fa-palette"></i>
+                    <span id="current-theme-indicator" class="hidden sm:inline">Theme</span>
+                    <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div id="theme-dropdown" class="theme-dropdown" role="menu" aria-label="Theme selection">
+                    <div class="theme-grid">
+                        <button data-theme-option="ocean" class="theme-option" onclick="switchTheme('ocean')" role="menuitem"><div class="theme-color-preview" style="background: linear-gradient(135deg, #06b6d4, #6366f1);"></div><div class="theme-name">Ocean</div></button>
+                        <button data-theme-option="sunrise" class="theme-option" onclick="switchTheme('sunrise')" role="menuitem"><div class="theme-color-preview" style="background: linear-gradient(135deg, #0891b2, #4f46e5);"></div><div class="theme-name">Sunrise</div></button>
+                        <button data-theme-option="midnight" class="theme-option" onclick="switchTheme('midnight')" role="menuitem"><div class="theme-color-preview" style="background: linear-gradient(135deg, #3b82f6, #2563eb);"></div><div class="theme-name">Midnight</div></button>
+                        <button data-theme-option="royal" class="theme-option" onclick="switchTheme('royal')" role="menuitem"><div class="theme-color-preview" style="background: linear-gradient(135deg, #a855f7, #9333ea);"></div><div class="theme-name">Royal</div></button>
+                        <button data-theme-option="forest" class="theme-option" onclick="switchTheme('forest')" role="menuitem"><div class="theme-color-preview" style="background: linear-gradient(135deg, #10b981, #059669);"></div><div class="theme-name">Forest</div></button>
+                        <button data-theme-option="sunset" class="theme-option" onclick="switchTheme('sunset')" role="menuitem"><div class="theme-color-preview" style="background: linear-gradient(135deg, #f97316, #ea580c);"></div><div class="theme-name">Sunset</div></button>
+                        <button data-theme-option="blossom" class="theme-option" onclick="switchTheme('blossom')" role="menuitem"><div class="theme-color-preview" style="background: linear-gradient(135deg, #ec4899, #db2777);"></div><div class="theme-name">Blossom</div></button>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
 
     <!-- Main -->
-    <main class="mx-auto max-w-7xl px-4 py-10">
+    <main class="mx-auto max-w-7xl px-4 py-10 relative">
+        <!-- Background decorations -->
+        <div class="absolute inset-0 opacity-5 pointer-events-none overflow-hidden">
+            <div class="animated-bg-element w-64 h-64 bg-accent top-10 left-10"></div>
+            <div class="animated-bg-element w-48 h-48 bg-accent2 bottom-20 right-20" style="animation-delay: -5s;"></div>
+            <div class="animated-bg-element w-32 h-32 bg-accent top-1/2 right-1/4" style="animation-delay: -10s;"></div>
+        </div>
+
         <!-- Hero -->
-        <section class="text-center mb-14">
-            <h1 class="text-5xl md:text-6xl font-extrabold mb-4"><span class="bg-gradient-to-r from-accent to-accent2 text-transparent bg-clip-text">Get In Touch</span></h1>
-            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">Ready to discuss your next project? I'd love to hear from you and explore how we can work together.</p>
+        <section class="text-center mb-16 relative z-10">
+            <div class="inline-block mb-6">
+                <span class="px-4 py-2 bg-gradient-to-r from-accent/20 to-accent2/20 rounded-full text-accent text-sm font-semibold border border-accent/30">
+                    <i class="fas fa-envelope-open-text mr-2"></i>Let's Connect
+                </span>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-4">
+                <span class="bg-gradient-to-r from-accent to-accent2 text-transparent bg-clip-text">Get In Touch</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                Ready to discuss your next project? I'd love to hear from you and explore how we can work together.
+            </p>
         </section>
 
+        <!-- Section Separator -->
+        <div class="section-separator"></div>
+
         <!-- Contact grid -->
-        <div class="contact-grid">
+        <div class="contact-grid relative z-10">
             <!-- Left: Contact details -->
             <div class="contact-col">
+                <div class="inline-block mb-4">
+                    <span class="px-3 py-1 bg-accent/20 text-accent text-xs font-semibold rounded-full border border-accent/30">
+                        <i class="fas fa-address-card mr-1"></i>Contact Details
+                    </span>
+                </div>
                 <h2 class="text-3xl font-bold mb-8 bg-gradient-to-r from-accent to-accent2 text-transparent bg-clip-text">Contact Information</h2>
-                <div class="space-y-6">
-                    <div class="flex items-center gap-4 p-4 bg-white/10 rounded-xl shadow-glass">
-                        <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center"><i class="fas fa-envelope text-white text-xl"></i></div>
-                        <div>
-                            <h3 class="font-semibold text-white">Email</h3>
-                            <a href="#" onclick="openContactModal(); return false;" class="text-gray-300 hover:text-accent">aviksagi@gmail.com</a>
+                <div class="space-y-4">
+                    <div class="contact-card flex items-center gap-4 p-5 glass rounded-xl border border-white/20 group">
+                        <div class="w-14 h-14 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center contact-icon transition-transform duration-300">
+                            <i class="fas fa-envelope text-white text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-white mb-1">Email</h3>
+                            <a href="#" onclick="openContactModal(); return false;" class="text-gray-300 hover:text-accent transition-colors">aviksagi@gmail.com</a>
                         </div>
                     </div>
-                    <div class="flex items-center gap-4 p-4 bg-white/10 rounded-xl shadow-glass">
-                        <div class="w-12 h-12 bg-gradient-to-r from-accent2 to-accent rounded-full flex items-center justify-center"><i class="fas fa-phone text-white text-xl"></i></div>
-                        <div>
-                            <h3 class="font-semibold text-white">Phone</h3>
-                            <a href="tel:+918095706732" class="text-gray-300 hover:text-accent">+91-8095706732</a>
+                    <div class="contact-card flex items-center gap-4 p-5 glass rounded-xl border border-white/20 group">
+                        <div class="w-14 h-14 bg-gradient-to-r from-accent2 to-accent rounded-full flex items-center justify-center contact-icon transition-transform duration-300">
+                            <i class="fas fa-phone text-white text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-white mb-1">Phone</h3>
+                            <a href="tel:+918095706732" class="text-gray-300 hover:text-accent transition-colors">+91-8095706732</a>
                         </div>
                     </div>
-                    <div class="flex items-center gap-4 p-4 bg-white/10 rounded-xl shadow-glass">
-                        <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-accent rounded-full flex items-center justify-center"><i class="fas fa-map-marker-alt text-white text-xl"></i></div>
-                        <div>
-                            <h3 class="font-semibold text-white">Location</h3>
+                    <div class="contact-card flex items-center gap-4 p-5 glass rounded-xl border border-white/20 group">
+                        <div class="w-14 h-14 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center contact-icon transition-transform duration-300">
+                            <i class="fas fa-map-marker-alt text-white text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-white mb-1">Location</h3>
                             <p class="text-gray-300">Bengaluru, India</p>
                         </div>
                     </div>
-                    <div class="flex items-center gap-4 p-4 bg-white/10 rounded-xl shadow-glass">
-                        <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-accent2 rounded-full flex items-center justify-center"><i class="fab fa-linkedin text-white text-xl"></i></div>
-                        <div>
-                            <h3 class="font-semibold text-white">LinkedIn</h3>
-                            <a href="https://linkedin.com/in/avik-biswas-stats" target="_blank" class="text-gray-300 hover:text-accent">linkedin.com/in/avik-biswas-stats</a>
+                    <div class="contact-card flex items-center gap-4 p-5 glass rounded-xl border border-white/20 group">
+                        <div class="w-14 h-14 rounded-full flex items-center justify-center contact-icon transition-transform duration-300" style="background: linear-gradient(135deg, #0077b5, #005885);">
+                            <i class="fab fa-linkedin text-white text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-semibold text-white mb-1">LinkedIn</h3>
+                            <a href="https://linkedin.com/in/avik-biswas-stats" target="_blank" class="text-gray-300 hover:text-accent transition-colors">linkedin.com/in/avik-biswas-stats</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="mt-8 bg-white/10 rounded-xl p-6 shadow-glass">
-                    <h3 class="text-xl font-bold text-white mb-3">Download Resume</h3>
+                <div class="mt-8 glass rounded-xl p-6 border border-white/20 hover:border-accent/40 transition-all duration-300 hover:shadow-xl">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 bg-gradient-to-r from-accent to-accent2 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-file-pdf text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Download Resume</h3>
+                    </div>
                     <p class="text-gray-300 mb-4">Get a copy of my detailed resume with complete work experience and technical skills.</p>
-                    <a href="../assets/Avik%20Biswas_Resume_V2.pdf" download class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-accent to-accent2 text-white rounded-lg font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all"><i class="fas fa-download"></i>Download PDF</a>
+                    <a href="../assets/Avik_Biswas_Resume.pdf" download class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-accent to-accent2 text-white rounded-lg font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                        <i class="fas fa-download"></i>Download PDF
+                    </a>
                 </div>
             </div>
 
             <!-- Right: Form -->
             <div class="contact-col">
+                <div class="inline-block mb-4">
+                    <span class="px-3 py-1 bg-accent2/20 text-accent2 text-xs font-semibold rounded-full border border-accent2/30">
+                        <i class="fas fa-paper-plane mr-1"></i>Send Message
+                    </span>
+                </div>
                 <h2 class="text-3xl font-bold mb-8 bg-gradient-to-r from-accent to-accent2 text-transparent bg-clip-text">Send a Message</h2>
 
-                <div id="successMessage" class="message mb-6 p-4 bg-green-500/20 border border-green-500/50 rounded-lg text-green-300">
-                    <i class="fas fa-check-circle mr-2"></i>
-                    <span class="font-semibold">Message sent successfully!</span>
-                </div>
-                <div id="errorMessage" class="message mb-6 p-4 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300">
-                    <i class="fas fa-exclamation-circle mr-2"></i>
-                    <span class="font-semibold">Failed to send message. Please try again.</span>
+                <div id="messageContainer" class="glass rounded-xl p-6 border border-white/20 mb-6 hidden">
+                    <div id="successMessage" class="message p-4 bg-green-500/20 border border-green-500/50 rounded-lg text-green-300 flex items-center gap-2">
+                        <i class="fas fa-check-circle"></i>
+                        <span class="font-semibold">Message sent successfully!</span>
+                    </div>
+                    <div id="errorMessage" class="message p-4 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300 flex items-center gap-2">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span class="font-semibold">Failed to send message. Please try again.</span>
+                    </div>
                 </div>
 
-                <form id="contactForm" class="space-y-6" action="https://formspree.io/f/xpwjkqyp" method="POST">
+                <form id="contactForm" class="glass rounded-xl p-6 border border-white/20 space-y-5" action="https://formspree.io/f/xpwjkqyp" method="POST">
                     <div>
                         <label for="name" class="block text-gray-300 text-sm font-bold mb-2">Full Name *</label>
-                        <input type="text" id="name" name="name" required class="form-input w-full px-4 py-3 rounded-lg bg-white/10 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent" placeholder="Your full name">
+                        <div class="form-input-group relative">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="name" name="name" required class="form-input w-full px-4 py-3 pl-10 rounded-lg bg-white/10 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all" placeholder="Your full name">
+                        </div>
                     </div>
                     <div>
                         <label for="email" class="block text-gray-300 text-sm font-bold mb-2">Email Address *</label>
-                        <input type="email" id="email" name="email" required class="form-input w-full px-4 py-3 rounded-lg bg-white/10 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent" placeholder="your.email@example.com">
+                        <div class="form-input-group relative">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" name="email" required class="form-input w-full px-4 py-3 pl-10 rounded-lg bg-white/10 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all" placeholder="your.email@example.com">
+                        </div>
                     </div>
                     <div>
                         <label for="subject" class="block text-gray-300 text-sm font-bold mb-2">Subject *</label>
-                        <input type="text" id="subject" name="subject" required class="form-input w-full px-4 py-3 rounded-lg bg-white/10 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent" placeholder="What's this about?">
+                        <div class="form-input-group relative">
+                            <i class="fas fa-tag"></i>
+                            <input type="text" id="subject" name="subject" required class="form-input w-full px-4 py-3 pl-10 rounded-lg bg-white/10 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all" placeholder="What's this about?">
+                        </div>
                     </div>
                     <div>
                         <label for="message" class="block text-gray-300 text-sm font-bold mb-2">Message *</label>
-                        <textarea id="message" name="message" rows="6" required class="form-input w-full px-4 py-3 rounded-lg bg-white/10 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent resize-none" placeholder="Tell me about your project or how I can help..."></textarea>
+                        <div class="form-input-group relative">
+                            <i class="fas fa-comment-alt textarea-icon"></i>
+                            <textarea id="message" name="message" rows="6" required class="form-input w-full px-4 py-3 pl-10 pt-3 rounded-lg bg-white/10 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent resize-none transition-all" placeholder="Tell me about your project or how I can help..."></textarea>
+                        </div>
                     </div>
-                    <button type="submit" id="submitBtn" class="w-full px-8 py-4 bg-gradient-to-r from-accent to-accent2 text-white rounded-lg font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all focus:outline-none focus:ring-2 focus:ring-accent2">
-                        <span class="button-text"><i class="fas fa-paper-plane mr-2"></i>Send Message</span>
-                        <span class="spinner hidden"><i class="fas fa-spinner fa-spin mr-2"></i>Sending...</span>
+                    <button type="submit" id="submitBtn" class="w-full px-8 py-4 bg-gradient-to-r from-accent to-accent2 text-white rounded-lg font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all focus:outline-none focus:ring-2 focus:ring-accent2 relative overflow-hidden group">
+                        <span class="button-text relative z-10"><i class="fas fa-paper-plane mr-2"></i>Send Message</span>
+                        <span class="spinner hidden relative z-10"><i class="fas fa-spinner fa-spin mr-2"></i>Sending...</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-accent2 to-accent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     </button>
                 </form>
 
-                <div class="mt-8 p-6 bg-white/5 rounded-xl border border-white/10">
-                    <h3 class="text-lg font-semibold text-white mb-3">Prefer other ways to connect?</h3>
+                <div class="mt-8 glass rounded-xl p-6 border border-white/20 hover:border-accent/40 transition-all duration-300">
+                    <h3 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                        <i class="fas fa-link text-accent"></i>
+                        Prefer other ways to connect?
+                    </h3>
                     <div class="grid sm:grid-cols-3 gap-3">
-                        <a href="#" onclick="openContactModal(); return false;" class="flex items-center justify-center gap-2 px-4 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-all"><i class="fas fa-envelope"></i>Email</a>
-                        <a href="https://linkedin.com/in/avik-biswas-stats" target="_blank" class="flex items-center justify-center gap-2 px-4 py-2 bg-blue-600/20 text-blue-300 rounded-lg hover:bg-blue-600/30 transition-all"><i class="fab fa-linkedin"></i>LinkedIn</a>
-                        <a href="tel:+918095706732" class="flex items-center justify-center gap-2 px-4 py-2 bg-green-600/20 text-green-300 rounded-lg hover:bg-green-600/30 transition-all"><i class="fas fa-phone"></i>Call</a>
+                        <a href="#" onclick="openContactModal(); return false;" class="flex items-center justify-center gap-2 px-4 py-3 bg-white/10 text-white rounded-lg hover:bg-white/20 hover:scale-105 transition-all border border-white/10 hover:border-accent/40">
+                            <i class="fas fa-envelope"></i>
+                            <span class="text-sm font-medium">Email</span>
+                        </a>
+                        <a href="https://linkedin.com/in/avik-biswas-stats" target="_blank" class="flex items-center justify-center gap-2 px-4 py-3 rounded-lg transition-all hover:scale-105 border border-[#0077b5]/30 hover:border-[#0077b5]/60" style="background-color: rgba(0, 119, 181, 0.2); color: #70b5e0;">
+                            <i class="fab fa-linkedin"></i>
+                            <span class="text-sm font-medium">LinkedIn</span>
+                        </a>
+                        <a href="tel:+918095706732" class="flex items-center justify-center gap-2 px-4 py-3 bg-green-600/20 text-green-300 rounded-lg hover:bg-green-600/30 hover:scale-105 transition-all border border-green-500/30 hover:border-green-500/60">
+                            <i class="fas fa-phone"></i>
+                            <span class="text-sm font-medium">Call</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -253,10 +301,9 @@
             <div class="grid md:grid-cols-4 gap-8">
                 <div class="md:col-span-2">
                     <h3 class="text-2xl font-bold bg-gradient-to-r from-accent to-accent2 text-transparent bg-clip-text mb-4">Avik Biswas</h3>
-                    <p class="text-gray-400 mb-4 max-w-md">Principal Data Scientist passionate about building AI/ML solutions for telematics and analytics with measurable business impact.</p>
+                    <p class="text-gray-400 mb-4 max-w-md">Principal Data Scientist with 15+ years experience in AI/ML, Data Science, and Advanced Analytics. Specialized in IoT/Telematics, Predictive Modeling, and GenAI solutions.</p>
                     <div class="flex gap-4">
-                        <a href="https://linkedin.com/in/avik-biswas-stats" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform"><i class="fab fa-linkedin text-white"></i></a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:scale-110 transition-transform"><i class="fab fa-github text-white"></i></a>
+                        <a href="https://linkedin.com/in/avik-biswas-stats" class="w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform hover:bg-[#005885]" style="background-color: #0077b5;"><i class="fab fa-linkedin text-white"></i></a>
                     </div>
                 </div>
                 <div>
@@ -265,7 +312,7 @@
                         <li><a href="about.html" class="text-gray-400 hover:text-accent">About Me</a></li>
                         <li><a href="../index.html#projects" class="text-gray-400 hover:text-accent">Projects</a></li>
                         <li><a href="contact.html" class="text-gray-400 hover:text-accent">Contact</a></li>
-                        <li><a href="fun-zone.html" class="text-gray-400 hover:text-accent">Tech Playground</a></li>
+                        <li><a href="tech-playground.html" class="text-gray-400 hover:text-accent">Tech Playground</a></li>
                     </ul>
                 </div>
                 <div>
@@ -281,7 +328,7 @@
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <p class="text-gray-400 text-sm">© 2025 Avik Biswas. Built with ❤️ using modern web technologies.</p>
                     <div class="flex gap-4 mt-4 md:mt-0">
-                        <a href="../assets/Avik%20Biswas_Resume_V2.pdf" download class="text-accent hover:text-accent2 text-sm"><i class="fas fa-download mr-1"></i>Download Resume</a>
+                        <a href="../assets/Avik_Biswas_Resume.pdf" download class="text-accent hover:text-accent2 text-sm"><i class="fas fa-download mr-1"></i>Download Resume</a>
                         <span class="text-gray-600">|</span>
                         <button id="scroll-to-top" class="text-accent hover:text-accent2 text-sm"><i class="fas fa-arrow-up mr-1"></i>Back to Top</button>
                     </div>
@@ -291,24 +338,28 @@
     </footer>
 
     <script>
-        // Theme management
-        function applyTheme(theme) {
-            const body = document.body;
-            const btn = document.getElementById('globalThemeToggle');
-            if (theme === 'light') { body.classList.remove('dark'); body.classList.add('light'); if (btn) btn.innerHTML = '<i class="fas fa-sun"></i>'; }
-            else { body.classList.remove('light'); body.classList.add('dark'); if (btn) btn.innerHTML = '<i class="fas fa-moon"></i>'; }
-            localStorage.setItem('theme', theme);
-        }
-        (function() { applyTheme('dark'); })();
-
         // Contact form submission
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
             const spinner = btn.querySelector('.spinner');
             const text = btn.querySelector('.button-text');
-            spinner.classList.remove('hidden'); text.classList.add('hidden');
+            const messageContainer = document.getElementById('messageContainer');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Hide container and all messages first
+            messageContainer.classList.add('hidden');
+            successMessage.classList.remove('show');
+            errorMessage.classList.remove('show');
+            
+            spinner.classList.remove('hidden'); 
+            text.classList.add('hidden');
+            
             const fd = new FormData(this);
+            let showSuccess = false;
+            let showError = false;
+            
             try {
                 const resp = await fetch('https://formspree.io/f/xpwjkqyp', {
                     method:'POST',
@@ -321,26 +372,71 @@
                     })
                 });
                 if (resp.ok) {
-                    document.getElementById('successMessage').classList.add('show');
+                    showSuccess = true;
                     this.reset();
                 } else {
-                    // Fallback to mailto on any non-OK response
-                    const mailto = `mailto:aviksagi@gmail.com?subject=${encodeURIComponent(fd.get('subject'))}&body=${encodeURIComponent(`Name: ${fd.get('name')}\nEmail: ${fd.get('email')}\n\nMessage:\n${fd.get('message')}`)}`;
-                    window.location.href = mailto;
+                    showError = true;
                 }
             } catch(_) { 
-                const mailto = `mailto:aviksagi@gmail.com?subject=${encodeURIComponent(fd.get('subject'))}&body=${encodeURIComponent(`Name: ${fd.get('name')}\nEmail: ${fd.get('email')}\n\nMessage:\n${fd.get('message')}`)}`;
-                window.location.href = mailto;
+                showError = true;
             } finally {
-                spinner.classList.add('hidden'); text.classList.remove('hidden');
-                setTimeout(()=>{ document.getElementById('successMessage').classList.remove('show'); document.getElementById('errorMessage').classList.remove('show'); }, 4000);
+                spinner.classList.add('hidden'); 
+                text.classList.remove('hidden');
+                
+                // Show only the appropriate message
+                if (showSuccess) {
+                    successMessage.classList.add('show');
+                    errorMessage.classList.remove('show');
+                    messageContainer.classList.remove('hidden');
+                } else if (showError) {
+                    successMessage.classList.remove('show');
+                    errorMessage.classList.add('show');
+                    messageContainer.classList.remove('hidden');
+                }
+                
+                // Hide messages after 5 seconds
+                setTimeout(()=>{ 
+                    messageContainer.classList.add('hidden');
+                    successMessage.classList.remove('show'); 
+                    errorMessage.classList.remove('show'); 
+                }, 5000);
             }
         });
 
-        // Theme toggle and utilities
+        // Utilities
+        // Theme dropdown toggle function
+        function toggleThemeDropdown() {
+            const dropdown = document.getElementById('theme-dropdown');
+            const btn = document.getElementById('theme-switcher-btn');
+            if (dropdown && btn) {
+                const isOpen = dropdown.classList.contains('show');
+                dropdown.classList.toggle('show');
+                btn.setAttribute('aria-expanded', !isOpen);
+                if (!isOpen) {
+                    setTimeout(() => {
+                        document.addEventListener('click', function closeDropdown(e) {
+                            if (!dropdown.contains(e.target) && !btn.contains(e.target)) {
+                                dropdown.classList.remove('show');
+                                btn.setAttribute('aria-expanded', 'false');
+                                document.removeEventListener('click', closeDropdown);
+                            }
+                        });
+                    }, 0);
+                }
+            }
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const dropdown = document.getElementById('theme-dropdown');
+                const btn = document.getElementById('theme-switcher-btn');
+                if (dropdown && dropdown.classList.contains('show')) {
+                    dropdown.classList.remove('show');
+                    if (btn) btn.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+
         document.addEventListener('DOMContentLoaded', function() {
-            const themeBtn = document.getElementById('globalThemeToggle');
-            if (themeBtn) themeBtn.addEventListener('click', () => applyTheme(document.body.classList.contains('dark') ? 'light' : 'dark'));
             const scrollToTopBtn = document.getElementById('scroll-to-top');
             if (scrollToTopBtn) scrollToTopBtn.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
         });
@@ -367,7 +463,7 @@
                         <i class="fas fa-envelope"></i>
                         Open Email Client
                     </button>
-                    <button onclick="openLinkedIn()" class="w-full flex items-center justify-center gap-3 px-4 py-3 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors">
+                    <button onclick="openLinkedIn()" class="w-full flex items-center justify-center gap-3 px-4 py-3 text-white rounded-lg transition-colors hover:bg-[#005885]" style="background-color: #0077b5;">
                         <i class="fab fa-linkedin"></i>
                         Connect on LinkedIn
                     </button>

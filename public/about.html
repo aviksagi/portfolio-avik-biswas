@@ -12,166 +12,48 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon.svg">
     <meta name="theme-color" content="#06b6d4">
     
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6Y1JBT1EXB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-6Y1JBT1EXB', {
+        debug_mode: true  // Enable debug mode for localhost testing
+      });
+    </script>
+    
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "t8hxb4v0kn");
+    </script>
+    
+    <!-- Centralized Theme Configuration -->
+    <script src="../js/theme-config.js"></script>
+    
     <!-- TailwindCSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'Poppins', 'Space Grotesk', 'ui-sans-serif', 'system-ui'],
-            },
-            colors: {
-              accent: '#06b6d4',
-              accent2: '#6366f1',
-            },
-            boxShadow: {
-              glass: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
-            },
-            backdropBlur: {
-              sm: '4px',
-              md: '8px',
-              lg: '16px',
-            },
-          },
-        },
-      }
+      tailwind.config = window.tailwindConfig;
     </script>
+    
+    <!-- Centralized Styles -->
+    <link rel="stylesheet" href="../css/main.css">
+    
+    <!-- Theme Switcher Script -->
+    <script src="../js/theme-switcher.js"></script>
     
     <!-- Additional Libraries -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     
+    <!-- Page-specific styles for about.html -->
     <style>
-        /* Enhanced CSS Variables */
-        :root {
-          --accent: #06b6d4;
-          --accent2: #6366f1;
-          --bg-dark: #0f172a;
-          --bg-light: #f8fafc;
-          --text-light: #f1f5f9;
-          --text-dark: #1e293b;
-        }
-        
-        /* Smooth scrolling */
-        html { 
-          scroll-behavior: smooth; 
-        }
-        
-        /* Theme transitions */
-        body {
-          background: var(--bg-dark);
-          color: var(--text-light);
-          transition: background 0.3s, color 0.3s;
-        }
-        
-        body.light {
-          background: var(--bg-light);
-          color: var(--text-dark);
-        }
-        
-        body.dark {
-          background: var(--bg-dark);
-          color: var(--text-light);
-        }
-        
-        /* Analytics-themed background overlay */
-        body { position: relative; }
-        body::before {
-          content: '';
-          position: fixed;
-          inset: 0;
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cdefs%3E%3Cpattern id='grid' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Cpath d='M80 0 L0 0 0 80' fill='none' stroke='%23ffffff' stroke-opacity='0.05' stroke-width='1'/%3E%3C/pattern%3E%3ClinearGradient id='lineGrad' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0%25' stop-color='%2306b6d4' stop-opacity='0.5'/%3E%3Cstop offset='100%25' stop-color='%236366f1' stop-opacity='0.5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23grid)'/%3E%3Cpolyline points='100,700 300,600 450,650 600,520 800,560 1000,430 1200,480 1400,360' fill='none' stroke='url(%23lineGrad)' stroke-width='3' stroke-opacity='0.4'/%3E%3Crect x='220' y='620' width='40' height='80' fill='%2306b6d4' fill-opacity='0.35'/%3E%3Crect x='260' y='580' width='40' height='120' fill='%236366f1' fill-opacity='0.35'/%3E%3Crect x='300' y='540' width='40' height='160' fill='%23a78bfa' fill-opacity='0.35'/%3E%3Ccircle cx='1000' cy='430' r='5' fill='%23ffffff' fill-opacity='0.6'/%3E%3C/svg%3E");
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: center;
-          opacity: 0.15;
-          pointer-events: none;
-          z-index: 1;
-          mix-blend-mode: soft-light;
-        }
-        
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-          width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-          background: rgba(255, 255, 255, 0.1);
-        }
-        
-        ::-webkit-scrollbar-thumb {
-          background: linear-gradient(to bottom, var(--accent), var(--accent2));
-          border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-          background: linear-gradient(to bottom, var(--accent2), var(--accent));
-        }
-        
-        /* Glass morphism effect */
-        .glass {
-          background: rgba(255, 255, 255, 0.1);
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        /* Gradient text */
-        .gradient-text {
-          background: linear-gradient(135deg, var(--accent), var(--accent2));
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-        
-        /* Animation keyframes */
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .fade-in-up {
-          animation: fadeInUp 0.6s ease-out;
-        }
-        
-        /* Testimonial card hover effect */
-        .testimonial-card {
-          transition: all 0.3s ease;
-        }
-        
-        .testimonial-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* Horizontal marquee for testimonials */
-        .marquee { overflow-x: hidden; }
-        .marquee.paused { overflow-x: auto; cursor: ew-resize; }
-        .marquee-track {
-          display: flex;
-          gap: 2rem;
-          width: max-content;
-          animation: marquee-left 80s linear infinite;
-        }
-        .marquee:hover .marquee-track { animation-play-state: paused; }
-        @keyframes marquee-left {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .marquee-track { animation: none; }
-        }
-        /* Clamp long quotes but allow expand on hover/click */
-        .testimonial-text { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-        .marquee .testimonial-card:hover .testimonial-text, .testimonial-card.expanded .testimonial-text { -webkit-line-clamp: unset; -webkit-box-orient: unset; overflow: visible; }
-    
-        /* Industry Card Animations */
+        /* Industry Card Animations (page-specific) */
         .industry-card {
           position: relative;
           overflow: hidden;
@@ -275,24 +157,42 @@
           height: 300px;
         }
 
+        /* Scroll progress indicator (page-specific) */
+        .scroll-progress {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 0%;
+          height: 3px;
+          background: linear-gradient(to right, var(--accent), var(--accent2));
+          z-index: 9999;
+          transition: width 0.1s ease-out;
+        }
+
+        /* Profile picture hover effect */
+        .profile-pic-container {
+          transition: transform 0.3s ease;
+        }
+
+        .profile-pic-container:hover {
+          transform: scale(1.05);
+        }
+
+        .profile-pic-container:hover .profile-badge {
+          transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Metric cards */
+        .metric-card {
+          transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 30px rgba(6, 182, 212, 0.2);
+        }
+
     </style>
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TG0CDFQBDS"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-TG0CDFQBDS');
-    </script>
-    
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "u4d4un89eb");
-    </script>
 </head>
 
 <body class="dark min-h-screen font-sans text-gray-200">
@@ -303,64 +203,136 @@
         </a>
         <div class="flex items-center gap-2 md:gap-4">
             <a class="text-sm md:text-base font-semibold text-accent2 hover:text-accent transition-colors px-3 py-2 rounded-lg hover:bg-white/10" href="about.html">About Me</a>
+            <a class="text-sm md:text-base font-semibold text-accent2 hover:text-accent transition-colors px-3 py-2 rounded-lg hover:bg-white/10" href="../index.html#projects">Projects</a>
             <a class="text-sm md:text-base font-semibold text-accent2 hover:text-accent transition-colors px-3 py-2 rounded-lg hover:bg-white/10" href="contact.html">Contact</a>
-            <a class="text-sm md:text-base font-semibold text-accent2 hover:text-accent transition-colors px-3 py-2 rounded-lg hover:bg-white/10" href="fun-zone.html">Tech Playground</a>
-            <!-- Theme toggle removed; dark theme fixed -->
+            <a class="text-sm md:text-base font-semibold text-accent2 hover:text-accent transition-colors px-3 py-2 rounded-lg hover:bg-white/10" href="tech-playground.html">Tech Playground</a>
             <a class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-accent to-accent2 text-white rounded-lg font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all text-sm md:text-base" href="https://www.linkedin.com/in/avik-biswas-stats" target="_blank" rel="noopener">
                 <i class="fab fa-linkedin"></i>
                 LinkedIn
             </a>
+            <!-- Theme Switcher -->
+            <div class="theme-switcher">
+                <button id="theme-switcher-btn" class="theme-switcher-btn" aria-label="Change theme" aria-expanded="false" aria-haspopup="true" onclick="toggleThemeDropdown()">
+                    <i id="current-theme-icon" class="fas fa-palette"></i>
+                    <span id="current-theme-indicator" class="hidden sm:inline">Theme</span>
+                    <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div id="theme-dropdown" class="theme-dropdown" role="menu" aria-label="Theme selection">
+                    <div class="theme-grid">
+                        <button data-theme-option="ocean" class="theme-option" onclick="switchTheme('ocean')" role="menuitem"><div class="theme-color-preview" style="background: linear-gradient(135deg, #06b6d4, #6366f1);"></div><div class="theme-name">Ocean</div></button>
+                        <button data-theme-option="sunrise" class="theme-option" onclick="switchTheme('sunrise')" role="menuitem"><div class="theme-color-preview" style="background: linear-gradient(135deg, #0891b2, #4f46e5);"></div><div class="theme-name">Sunrise</div></button>
+                        <button data-theme-option="midnight" class="theme-option" onclick="switchTheme('midnight')" role="menuitem"><div class="theme-color-preview" style="background: linear-gradient(135deg, #3b82f6, #2563eb);"></div><div class="theme-name">Midnight</div></button>
+                        <button data-theme-option="royal" class="theme-option" onclick="switchTheme('royal')" role="menuitem"><div class="theme-color-preview" style="background: linear-gradient(135deg, #a855f7, #9333ea);"></div><div class="theme-name">Royal</div></button>
+                        <button data-theme-option="forest" class="theme-option" onclick="switchTheme('forest')" role="menuitem"><div class="theme-color-preview" style="background: linear-gradient(135deg, #10b981, #059669);"></div><div class="theme-name">Forest</div></button>
+                        <button data-theme-option="sunset" class="theme-option" onclick="switchTheme('sunset')" role="menuitem"><div class="theme-color-preview" style="background: linear-gradient(135deg, #f97316, #ea580c);"></div><div class="theme-name">Sunset</div></button>
+                        <button data-theme-option="blossom" class="theme-option" onclick="switchTheme('blossom')" role="menuitem"><div class="theme-color-preview" style="background: linear-gradient(135deg, #ec4899, #db2777);"></div><div class="theme-name">Blossom</div></button>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8">
         <!-- Hero Section -->
-        <section class="text-center mb-16 fade-in-up">
-            <div class="relative inline-block mb-8">
-                <img src="../assets/images/profile_pic.jpeg" alt="Avik Biswas" class="w-48 h-48 rounded-full mx-auto shadow-2xl border-4 border-accent/20 object-cover">
-                <div class="absolute -bottom-2 -right-2 w-16 h-16 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg">
-                    <i class="fas fa-code"></i>
+        <section class="text-center mb-16 fade-in-up relative overflow-hidden">
+            <!-- Background decorations -->
+            <div class="absolute inset-0 opacity-5 pointer-events-none">
+                <div class="animated-bg-element w-64 h-64 bg-accent top-10 left-10"></div>
+                <div class="animated-bg-element w-48 h-48 bg-accent2 bottom-20 right-20" style="animation-delay: -5s;"></div>
+                <div class="animated-bg-element w-32 h-32 bg-accent top-1/2 right-1/4" style="animation-delay: -10s;"></div>
+            </div>
+
+            <div class="relative z-10">
+                <!-- Experience Badge -->
+                <div class="inline-block mb-6">
+                    <span class="px-4 py-2 bg-gradient-to-r from-accent/20 to-accent2/20 rounded-full text-accent text-sm font-semibold border border-accent/30">
+                        <i class="fas fa-award mr-2"></i>15+ Years Experience
+                    </span>
+                </div>
+
+                <div class="relative inline-block mb-8 profile-pic-container">
+                    <img src="../assets/images/profile_pic.jpeg" alt="Avik Biswas" class="w-48 h-48 rounded-full mx-auto shadow-2xl border-4 border-accent/20 object-cover">
+                    <div class="absolute -bottom-2 -right-2 w-16 h-16 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg profile-badge transition-transform duration-300">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                </div>
+
+                <h1 class="text-5xl md:text-6xl font-extrabold mb-6">
+                    <span class="gradient-text">About Me</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
+                    Principal Data Scientist with 15+ years of experience in AI/ML, Data Science, and Advanced Analytics. Specialized in IoT/Telematics, Predictive Modeling, Machine Learning, Deep Learning, and GenAI solutions.
+                </p>
+
+                <!-- Key Metrics -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-12">
+                    <div class="metric-card glass rounded-xl p-4 border border-accent/20">
+                        <div class="text-2xl md:text-3xl font-bold gradient-text mb-1">$4M+</div>
+                        <div class="text-sm text-gray-400">Annual Savings</div>
+                    </div>
+                    <div class="metric-card glass rounded-xl p-4 border border-accent/20">
+                        <div class="text-2xl md:text-3xl font-bold gradient-text mb-1">30%</div>
+                        <div class="text-sm text-gray-400">Data Accuracy</div>
+                    </div>
+                    <div class="metric-card glass rounded-xl p-4 border border-accent/20">
+                        <div class="text-2xl md:text-3xl font-bold gradient-text mb-1">70%</div>
+                        <div class="text-sm text-gray-400">Work Reduction</div>
+                    </div>
+                    <div class="metric-card glass rounded-xl p-4 border border-accent/20">
+                        <div class="text-2xl md:text-3xl font-bold gradient-text mb-1">15+</div>
+                        <div class="text-sm text-gray-400">Years Experience</div>
+                    </div>
                 </div>
             </div>
-            <h1 class="text-5xl md:text-6xl font-extrabold mb-6">
-                <span class="gradient-text">About Me</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                Principal Data Scientist with 15+ years in AI/ML, telematics, and advanced analytics—turning high‑volume signal data into measurable business outcomes.
-            </p>
         </section>
+
+        <!-- Section Separator -->
+        <div class="section-separator"></div>
 
         <!-- About Content -->
         <section class="grid lg:grid-cols-2 gap-12 mb-16">
             <!-- Personal Story -->
-            <div class="glass rounded-2xl p-8 fade-in-up">
+            <div class="glass rounded-2xl p-8 fade-in-up hover:shadow-xl transition-all duration-300">
+                <div class="inline-block mb-4">
+                    <span class="px-3 py-1 bg-accent/20 text-accent text-xs font-semibold rounded-full border border-accent/30">
+                        <i class="fas fa-book-open mr-1"></i>Personal Journey
+                    </span>
+                </div>
                 <h2 class="text-3xl font-bold text-accent2 mb-6 flex items-center gap-3">
                     <i class="fas fa-user-circle"></i>
                     My Story
                 </h2>
                 <div class="space-y-4 text-gray-300 leading-relaxed">
                     <p>
-                        I specialize in building predictive models and analytics for IoT/Telematics—vehicle health, driver behaviour, EV range and battery health, and road surface classification. I love converting noisy signals into clear decisions that reduce cost, improve reliability, and enhance sustainability.
+                        With over 15 years of experience in AI/ML, Data Science, and Advanced Analytics, I've dedicated my career to transforming complex business challenges into data-driven solutions. My journey spans across Automotive, Manufacturing, and Retail industries, with specialization in IoT/Telematics, Predictive Modeling, Machine Learning, Deep Learning, and GenAI solutions.
                     </p>
                     <p>
-                        I’ve led data science initiatives at Danlaw (DeepView Analytics) and Darby Telematics (C6 Insights), collaborating closely with engineering and product. My work has enabled multi‑million dollar savings, ~30% data accuracy improvements, and proactive maintenance at fleet scale.
+                        Throughout my career, I've had the privilege of working on impactful projects that deliver measurable business value - from delivering $4M+ annual fuel savings through optimization models to building LLM-powered applications that reduce manual work by 70%. What drives me is the opportunity to leverage cutting-edge AI/ML technologies to solve real-world problems and create solutions that make a meaningful difference.
                     </p>
                     <p>
-                        I enjoy mentoring teams, partnering with stakeholders, and delivering solutions that are explainable, dependable, and business‑friendly. I actively adopt GenAI (LLMs/RAG) into ML workflows—for faster feature ideation, documentation, and human‑readable explanations—while keeping model quality and governance front and center.
+                        I believe in the power of combining statistical rigor with modern AI/ML techniques, continuous learning, and the importance of bridging the gap between technical excellence and business value. Every project is an opportunity to innovate, learn, and deliver impactful analytics solutions.
                     </p>
                 </div>
             </div>
 
             <!-- Core Values -->
-            <div class="glass rounded-2xl p-8 fade-in-up">
+            <div class="glass rounded-2xl p-8 fade-in-up hover:shadow-xl transition-all duration-300">
+                <div class="inline-block mb-4">
+                    <span class="px-3 py-1 bg-accent2/20 text-accent2 text-xs font-semibold rounded-full border border-accent2/30">
+                        <i class="fas fa-gem mr-1"></i>What Drives Me
+                    </span>
+                </div>
                 <h2 class="text-3xl font-bold text-accent2 mb-6 flex items-center gap-3">
                     <i class="fas fa-heart"></i>
                     Core Values
                 </h2>
                 <div class="space-y-6">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0">
+                    <div class="flex items-start gap-4 group hover:bg-white/5 p-3 rounded-lg transition-all duration-300">
+                        <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0 group-hover:scale-110 transition-transform">
                             <i class="fas fa-lightbulb"></i>
                         </div>
                         <div>
@@ -368,8 +340,8 @@
                             <p class="text-gray-300">Continuously exploring new technologies and approaches to solve complex problems creatively.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0">
+                    <div class="flex items-start gap-4 group hover:bg-white/5 p-3 rounded-lg transition-all duration-300">
+                        <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0 group-hover:scale-110 transition-transform">
                             <i class="fas fa-users"></i>
                         </div>
                         <div>
@@ -377,8 +349,8 @@
                             <p class="text-gray-300">Building strong relationships and fostering teamwork to achieve shared goals.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0">
+                    <div class="flex items-start gap-4 group hover:bg-white/5 p-3 rounded-lg transition-all duration-300">
+                        <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0 group-hover:scale-110 transition-transform">
                             <i class="fas fa-graduation-cap"></i>
                         </div>
                         <div>
@@ -386,8 +358,8 @@
                             <p class="text-gray-300">Embracing new challenges and staying current with evolving technologies and best practices.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0">
+                    <div class="flex items-start gap-4 group hover:bg-white/5 p-3 rounded-lg transition-all duration-300">
+                        <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0 group-hover:scale-110 transition-transform">
                             <i class="fas fa-star"></i>
                         </div>
                         <div>
@@ -398,13 +370,23 @@
                 </div>
             </div>
         </section>
+
+        <!-- Section Separator -->
+        <div class="section-separator"></div>
         <!-- Industries of Interest -->
         <section class="mb-16">
-            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Industries of Interest</h2>
-            <div class="glass rounded-2xl p-8 fade-in-up">
-                <p class="text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto mb-12 text-center">
-                    I am passionate about applying my expertise in data science, AI/ML, and analytics to industries where data can drive innovation and impact.
+            <div class="text-center mb-8">
+                <div class="inline-block mb-6">
+                    <span class="px-4 py-2 bg-gradient-to-r from-accent/20 to-accent2/20 rounded-full text-accent text-sm font-semibold border border-accent/30">
+                        <i class="fas fa-industry mr-2"></i>Industry Focus
+                    </span>
+                </div>
+                <h2 class="text-4xl font-bold mb-4 gradient-text">Industries of Interest</h2>
+                <p class="text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto">
+                    I am passionate about applying my expertise in data engineering, cloud platforms, and scalable systems to industries where data can drive innovation and impact.
                 </p>
+            </div>
+            <div class="glass rounded-2xl p-8 fade-in-up">
                 
                 <!-- Industry Cards Grid -->
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -448,7 +430,7 @@
                             </div>
                             <h3 class="text-xl font-bold text-white group-hover:text-red-300 transition-colors">Healthcare Technology</h3>
                         </div>
-                        <p class="text-gray-300 text-sm leading-relaxed mb-3">Predictive analytics for EHR, medical IoT, and patient care.</p>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-3">Data pipelines for EHR, medical IoT, and predictive analytics in patient care.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="px-2 py-1 bg-red-500/20 text-red-300 text-xs rounded-full tag">EHR Systems</span>
                             <span class="px-2 py-1 bg-pink-500/20 text-pink-300 text-xs rounded-full tag">Medical IoT</span>
@@ -456,13 +438,69 @@
                         </div>
                     </div>
 
-                    
+                    <!-- Manufacturing -->
+                    <div class="industry-card group bg-gradient-to-br from-blue-500/10 to-indigo-600/10 rounded-xl p-6 border border-blue-500/20 hover:border-blue-400/40 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center text-white text-2xl mr-4 group-hover:animate-pulse icon-container">
+                                <i class="fas fa-industry"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-blue-300 transition-colors">Manufacturing</h3>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-3">Predictive maintenance, quality control, supply chain optimization, and industrial IoT analytics.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded-full tag">Predictive Maintenance</span>
+                            <span class="px-2 py-1 bg-indigo-500/20 text-indigo-300 text-xs rounded-full tag">Quality Control</span>
+                            <span class="px-2 py-1 bg-sky-500/20 text-sky-300 text-xs rounded-full tag">Supply Chain</span>
+                        </div>
+                    </div>
 
-                    
+                    <!-- Automotive -->
+                    <div class="industry-card group bg-gradient-to-br from-cyan-500/10 to-blue-600/10 rounded-xl p-6 border border-cyan-500/20 hover:border-cyan-400/40 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center text-white text-2xl mr-4 group-hover:animate-bounce icon-container">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">Automotive</h3>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-3">Telematics analytics, fleet optimization, EV battery health, and autonomous vehicle data platforms.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-cyan-500/20 text-cyan-300 text-xs rounded-full tag">Telematics</span>
+                            <span class="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded-full tag">Fleet Optimization</span>
+                            <span class="px-2 py-1 bg-teal-500/20 text-teal-300 text-xs rounded-full tag">EV Analytics</span>
+                        </div>
+                    </div>
 
-                    
+                    <!-- Aerospace -->
+                    <div class="industry-card group bg-gradient-to-br from-gray-500/10 to-slate-600/10 rounded-xl p-6 border border-gray-500/20 hover:border-gray-400/40 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-gray-500/20">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-gray-500 to-slate-600 rounded-lg flex items-center justify-center text-white text-2xl mr-4 group-hover:animate-spin icon-container">
+                                <i class="fas fa-plane"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-gray-300 transition-colors">Aerospace</h3>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-3">Flight data analytics, predictive maintenance, fuel optimization, and mission-critical systems.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-gray-500/20 text-gray-300 text-xs rounded-full tag">Flight Analytics</span>
+                            <span class="px-2 py-1 bg-slate-500/20 text-slate-300 text-xs rounded-full tag">Predictive Maintenance</span>
+                            <span class="px-2 py-1 bg-zinc-500/20 text-zinc-300 text-xs rounded-full tag">Fuel Optimization</span>
+                        </div>
+                    </div>
 
-                    
+                    <!-- Semiconductors & HPC -->
+                    <div class="industry-card group bg-gradient-to-br from-cyan-500/10 to-blue-600/10 rounded-xl p-6 border border-cyan-500/20 hover:border-cyan-400/40 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/20">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center text-white text-2xl mr-4 group-hover:animate-bounce icon-container">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">Semiconductors & HPC</h3>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-3">Data workflows for chip design, testing, and high-performance computing research.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-cyan-500/20 text-cyan-300 text-xs rounded-full tag">Chip Design</span>
+                            <span class="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded-full tag">Testing</span>
+                            <span class="px-2 py-1 bg-sky-500/20 text-sky-300 text-xs rounded-full tag">HPC Research</span>
+                        </div>
+                    </div>
 
                     <!-- Finance -->
                     <div class="industry-card group bg-gradient-to-br from-emerald-500/10 to-green-600/10 rounded-xl p-6 border border-emerald-500/20 hover:border-emerald-400/40 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/20">
@@ -486,7 +524,7 @@
                     <div class="glass rounded-xl p-6 max-w-2xl mx-auto">
                         <h3 class="text-2xl font-bold text-white mb-4">Ready to Make an Impact?</h3>
                         <p class="text-gray-300 mb-6">
-                            I'm excited to bring my data science expertise to your industry. Let's discuss how we can drive innovation together.
+                            I'm excited to bring my data engineering expertise to your industry. Let's discuss how we can drive innovation together.
                         </p>
                         <a href="contact.html" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-accent to-accent2 text-white rounded-lg font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all cta-button">
                             <i class="fas fa-rocket"></i>
@@ -496,60 +534,466 @@
                 </div>
             </div>
         </section>
-        <!-- Design Philosophy section removed for data-science focus -->
-        <!-- SOLID section removed for data-science focus -->
-        <!-- Testimonials removed for brevity and relevance to data science profile -->
+        <!-- Section Separator -->
+        <div class="section-separator"></div>
 
-        <!-- Skills & Expertise -->
-        <section class="glass rounded-2xl p-8 mb-16 fade-in-up">
-            <h2 class="text-3xl font-bold text-accent2 mb-8 text-center">
-                Skills & Expertise
-            </h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">
-                                <i class="fas fa-brain"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-white mb-2">Data Science & AI</h3>
-                    <p class="text-gray-400 text-sm">Building predictive models, analytics, and decisioning systems</p>
+        <!-- Design Philosophy Section -->
+        <section class="mb-16">
+            <div class="text-center mb-8">
+                <div class="inline-block mb-6">
+                    <span class="px-4 py-2 bg-gradient-to-r from-accent/20 to-accent2/20 rounded-full text-accent text-sm font-semibold border border-accent/30">
+                        <i class="fas fa-palette mr-2"></i>Engineering Approach
+                    </span>
                 </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">
-                        <i class="fas fa-cloud"></i>
+                <h2 class="text-4xl font-bold mb-4 gradient-text">Design Philosophy</h2>
+                <p class="text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto">
+                    I believe great engineering is not just about writing code — it's about creating systems that are scalable, resilient, and human-centered. My design philosophy is shaped by a blend of engineering rigor, business alignment, and empathy for end users.
+                </p>
+            </div>
+            <div class="glass rounded-2xl p-8 fade-in-up">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4 group hover:bg-white/5 p-4 rounded-xl transition-all duration-300">
+                            <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">Simplicity Over Complexity</h3>
+                                <p class="text-gray-300 text-sm">I strive to design solutions that are elegant and easy to maintain. The best architecture is the one that solves today's problem while being flexible enough for tomorrow.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 group hover:bg-white/5 p-4 rounded-xl transition-all duration-300">
+                            <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">Data-Centric Thinking</h3>
+                                <p class="text-gray-300 text-sm">Data is at the heart of decision-making. I design pipelines and platforms that ensure data is accurate, reliable, and accessible across the organization.</p>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-semibold text-white mb-2">Cloud Architecture</h3>
-                    <p class="text-gray-400 text-sm">Designing and implementing cloud-native solutions</p>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4 group hover:bg-white/5 p-4 rounded-xl transition-all duration-300">
+                            <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-expand-arrows-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">Scalability and Performance</h3>
+                                <p class="text-gray-300 text-sm">From batch processing to real-time analytics, my solutions are built with scalability in mind — ensuring systems perform smoothly even as data grows exponentially.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 group hover:bg-white/5 p-4 rounded-xl transition-all duration-300">
+                            <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">Collaboration First</h3>
+                                <p class="text-gray-300 text-sm">Technology succeeds when people work together. I design systems that are well-documented, testable, and intuitive for teammates to extend or debug.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4 group hover:bg-white/5 p-4 rounded-xl transition-all duration-300">
+                            <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">User Impact Above All</h3>
+                                <p class="text-gray-300 text-sm">Whether it's a data scientist training models or a business user reading dashboards, I believe every technical decision should ultimately empower the end user.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 group hover:bg-white/5 p-4 rounded-xl transition-all duration-300">
+                            <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">Secure and Responsible</h3>
+                                <p class="text-gray-300 text-sm">In a world driven by AI and data, I ensure privacy, compliance, and security are not afterthoughts, but built into the foundation of every system.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">
-                        <i class="fas fa-users-cog"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-white mb-2">Team Leadership</h3>
-                    <p class="text-gray-400 text-sm">Mentoring and leading technical teams</p>
+            </div>
+        </section>
+        <!-- Section Separator -->
+        <div class="section-separator"></div>
+
+        <!-- S.O.L.I.D. Design Principles Section -->
+        <section class="mb-16">
+            <div class="text-center mb-8">
+                <div class="inline-block mb-6">
+                    <span class="px-4 py-2 bg-gradient-to-r from-accent/20 to-accent2/20 rounded-full text-accent text-sm font-semibold border border-accent/30">
+                        <i class="fas fa-code mr-2"></i>Technical Foundation
+                    </span>
                 </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">
-                        <i class="fas fa-chart-line"></i>
+                <h2 class="text-4xl font-bold mb-4 gradient-text">S.O.L.I.D. Design Principles</h2>
+                <p class="text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto">
+                    My technical approach is grounded in proven software design principles that ensure maintainable, scalable, and robust systems.
+                </p>
+            </div>
+            <div class="glass rounded-2xl p-8 fade-in-up">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-accent pl-4 group hover:bg-white/5 p-3 rounded-r-lg transition-all duration-300">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center">
+                                    <span class="text-accent font-bold text-sm">S</span>
+                                </div>
+                                <h3 class="text-xl font-semibold text-white">Single Responsibility</h3>
+                            </div>
+                            <p class="text-gray-300 text-sm">Each module has one reason to change, ensuring clarity and maintainability in complex systems.</p>
+                        </div>
+                        <div class="border-l-4 border-accent2 pl-4 group hover:bg-white/5 p-3 rounded-r-lg transition-all duration-300">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-8 h-8 bg-accent2/20 rounded-full flex items-center justify-center">
+                                    <span class="text-accent2 font-bold text-sm">O</span>
+                                </div>
+                                <h3 class="text-xl font-semibold text-white">Open/Closed Principle</h3>
+                            </div>
+                            <p class="text-gray-300 text-sm">Systems are open for extension but closed for modification, enabling easy feature additions.</p>
+                        </div>
+                        <div class="border-l-4 border-accent pl-4 group hover:bg-white/5 p-3 rounded-r-lg transition-all duration-300">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center">
+                                    <span class="text-accent font-bold text-sm">L</span>
+                                </div>
+                                <h3 class="text-xl font-semibold text-white">Liskov Substitution</h3>
+                            </div>
+                            <p class="text-gray-300 text-sm">Objects can be replaced with instances of their subtypes without altering system correctness.</p>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-semibold text-white mb-2">Analytics</h3>
-                    <p class="text-gray-400 text-sm">Transforming data into actionable insights using AI and ML</p>
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-accent2 pl-4 group hover:bg-white/5 p-3 rounded-r-lg transition-all duration-300">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-8 h-8 bg-accent2/20 rounded-full flex items-center justify-center">
+                                    <span class="text-accent2 font-bold text-sm">I</span>
+                                </div>
+                                <h3 class="text-xl font-semibold text-white">Interface Segregation</h3>
+                            </div>
+                            <p class="text-gray-300 text-sm">Clients should not depend on interfaces they don't use, promoting focused and lean APIs.</p>
+                        </div>
+                        <div class="border-l-4 border-accent pl-4 group hover:bg-white/5 p-3 rounded-r-lg transition-all duration-300">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center">
+                                    <span class="text-accent font-bold text-sm">D</span>
+                                </div>
+                                <h3 class="text-xl font-semibold text-white">Dependency Inversion</h3>
+                            </div>
+                            <p class="text-gray-300 text-sm">High-level modules don't depend on low-level modules; both depend on abstractions.</p>
+                        </div>
+                        <div class="mt-8 p-6 bg-gradient-to-r from-accent/10 to-accent2/10 rounded-lg border border-accent/20 hover:border-accent/40 transition-all duration-300">
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-quote-left text-accent text-xl"></i>
+                                <p class="text-gray-300 text-sm italic">
+                                    "These principles guide every architectural decision I make, ensuring that systems are not just functional, but truly maintainable and extensible."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Section Separator -->
+        <div class="section-separator"></div>
+
+        <!-- What People Say Section - Hidden as testimonials are for previous portfolio owner -->
+        <section class="mb-16 hidden">
+            <div class="text-center mb-8">
+                <div class="inline-block mb-6">
+                    <span class="px-4 py-2 bg-gradient-to-r from-accent/20 to-accent2/20 rounded-full text-accent text-sm font-semibold border border-accent/30">
+                        <i class="fas fa-quote-left mr-2"></i>Testimonials
+                    </span>
+                </div>
+                <h2 class="text-4xl font-bold mb-4 gradient-text">What People Say</h2>
+            </div>
+            <div class="marquee" id="testimonialsMarquee" tabindex="0" aria-label="Testimonials carousel (auto-scroll, hover or tap to pause)">
+                <div class="marquee-track" id="testimonialsTrack">
+                    <!-- row 1 -->
+                    <div class="testimonial-card bg-white/10 backdrop-blur-md rounded-xl shadow-glass p-6 md:p-8 min-w-[320px] max-w-md">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">RM</div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Ram Madhavan</h4>
+                                <p class="text-gray-400 text-sm">Manager & Mentor</p>
+                                <a href="https://www.linkedin.com/in/ram-madhavan-2885825/" target="_blank" rel="noopener" class="text-accent hover:text-accent2 text-sm transition-colors"><i class="fab fa-linkedin mr-1"></i>LinkedIn</a>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 italic testimonial-text">"Nitender has consistently impressed me with his ability to bridge deep technical expertise with strong leadership skills. Under my mentorship, he quickly grew into a go-to person for designing scalable data solutions and mentoring junior team members. His proactive approach, clarity of thought, and ability to translate business problems into data-driven solutions make him an invaluable asset to any team."</p>
+                    </div>
+
+                    <div class="testimonial-card bg-white/10 backdrop-blur-md rounded-xl shadow-glass p-6 md:p-8 min-w-[320px] max-w-md">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">RR</div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Rupesh Ravi</h4>
+                                <p class="text-gray-400 text-sm">Product Owner & Colleague</p>
+                                <a href="https://www.linkedin.com/in/rupeshravi/" target="_blank" rel="noopener" class="text-accent hover:text-accent2 text-sm transition-colors"><i class="fab fa-linkedin mr-1"></i>LinkedIn</a>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 italic testimonial-text">"Working with Nitender has been a seamless experience. As a product owner, I could always rely on him to understand business requirements deeply and convert them into reliable, high-performing solutions. He not only delivered on time but also challenged assumptions, ensuring that the final product created long-term value. His collaborative spirit and technical acumen made him one of the key drivers of our project's success."</p>
+                    </div>
+
+                    <div class="testimonial-card bg-white/10 backdrop-blur-md rounded-xl shadow-glass p-6 md:p-8 min-w-[320px] max-w-md">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">AS</div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Ashwin Sabapathy</h4>
+                                <p class="text-gray-400 text-sm">Director</p>
+                                <a href="https://www.linkedin.com/in/ashwin-sabapathy/" target="_blank" rel="noopener" class="text-accent hover:text-accent2 text-sm transition-colors"><i class="fab fa-linkedin mr-1"></i>LinkedIn</a>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 italic testimonial-text">"Nitender is a standout professional who consistently demonstrates ownership and accountability. At the leadership level, I have seen him take on complex challenges, whether it was streamlining large-scale data pipelines or optimizing performance for critical analytics workloads. His ability to align technical execution with business strategy sets him apart. He brings both depth in engineering and breadth in vision, which makes him an exceptional asset to any organization."</p>
+                    </div>
+
+                    <div class="testimonial-card bg-white/10 backdrop-blur-md rounded-xl shadow-glass p-6 md:p-8 min-w-[320px] max-w-md">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">AB</div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Avik Biswas</h4>
+                                <p class="text-gray-400 text-sm">Data Scientist & Colleague</p>
+                                <a href="https://www.linkedin.com/in/avik-biswas-stats/" target="_blank" rel="noopener" class="text-accent hover:text-accent2 text-sm transition-colors"><i class="fab fa-linkedin mr-1"></i>LinkedIn</a>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 italic testimonial-text">"As a data scientist, I found Nitender's partnership invaluable. He built robust, scalable data pipelines that enabled our machine learning models to run efficiently in production. His understanding of both engineering and the nuances of data science meant we could collaborate smoothly and innovate faster. Nitender's work ethic and problem-solving mindset make him a fantastic teammate."</p>
+                    </div>
+
+                    <div class="testimonial-card bg-white/10 backdrop-blur-md rounded-xl shadow-glass p-6 md:p-8 min-w-[320px] max-w-md">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">SSR</div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Sandeep Singh Rawat</h4>
+                                <p class="text-gray-400 text-sm">Colleague</p>
+                                <a href="https://www.linkedin.com/in/sandeep-singh-rawat-17a52ab1/" target="_blank" rel="noopener" class="text-accent hover:text-accent2 text-sm transition-colors"><i class="fab fa-linkedin mr-1"></i>LinkedIn</a>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 italic testimonial-text">"Nitender is one of the most reliable colleagues I've worked with. He has a rare mix of strong technical depth and the willingness to support the team. Whether it was troubleshooting critical production issues or brainstorming architectural improvements, he always brought clarity and practical solutions. His collaborative nature makes working with him a pleasure."</p>
+                    </div>
+
+                    <div class="testimonial-card bg-white/10 backdrop-blur-md rounded-xl shadow-glass p-6 md:p-8 min-w-[320px] max-w-md">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">CR</div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Chaitanya Revalla</h4>
+                                <p class="text-gray-400 text-sm">QA Colleague</p>
+                                <a href="https://www.linkedin.com/in/chaitanyarevalla/" target="_blank" rel="noopener" class="text-accent hover:text-accent2 text-sm transition-colors"><i class="fab fa-linkedin mr-1"></i>LinkedIn</a>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 italic testimonial-text">"Working with Nitender was a great experience. His structured approach to building scalable data solutions made QA testing much smoother. He always collaborated openly with the QA team, ensuring quality checks were part of the design, not an afterthought. His proactive mindset reduced defects and improved delivery timelines."</p>
+                    </div>
+                    <div class="testimonial-card bg-white/10 backdrop-blur-md rounded-xl shadow-glass p-6 md:p-8 min-w-[320px] max-w-md">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">RS</div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Ranju Sharma</h4>
+                                <p class="text-gray-400 text-sm">QA Colleague</p>
+                                <a href="https://www.linkedin.com/in/ranju-sharma-315031130/" target="_blank" rel="noopener" class="text-accent hover:text-accent2 text-sm transition-colors"><i class="fab fa-linkedin mr-1"></i>LinkedIn</a>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 italic testimonial-text">"Nitender is detail-oriented and always ready to support the QA process. He provided clear insights into complex systems, which made our test coverage stronger. His openness to feedback and willingness to collaborate helped the entire team deliver high-quality results consistently."</p>
+                    </div>
+
+                    <div class="testimonial-card bg-white/10 backdrop-blur-md rounded-xl shadow-glass p-6 md:p-8 min-w-[320px] max-w-md">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">RK</div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Ranjit Krishnamurthy</h4>
+                                <p class="text-gray-400 text-sm">Senior Software Engineer Colleague</p>
+                                <a href="https://www.linkedin.com/in/ranjitklive/" target="_blank" rel="noopener" class="text-accent hover:text-accent2 text-sm transition-colors"><i class="fab fa-linkedin mr-1"></i>LinkedIn</a>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 italic testimonial-text">"Nitender brings both technical depth and team spirit to every project. I have seen him design and implement robust data pipelines while also mentoring others. His ability to simplify complex problems and propose scalable solutions makes him a trusted engineer to work alongside."</p>
+                    </div>
+
+                    <div class="testimonial-card bg-white/10 backdrop-blur-md rounded-xl shadow-glass p-6 md:p-8 min-w-[320px] max-w-md">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">AR</div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Amanda Rodrigues</h4>
+                                <p class="text-gray-400 text-sm">Senior Software Engineer Colleague</p>
+                                <a href="https://www.linkedin.com/in/amanda-rodrigues-5013209/" target="_blank" rel="noopener" class="text-accent hover:text-accent2 text-sm transition-colors"><i class="fab fa-linkedin mr-1"></i>LinkedIn</a>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 italic testimonial-text">"Nitender is an exceptional teammate. His technical expertise in Python and big data engineering consistently stood out, but what I appreciated most was his collaborative approach. He was always approachable, supportive, and committed to helping the team succeed together."</p>
+                    </div>
+
+                    <div class="testimonial-card bg-white/10 backdrop-blur-md rounded-xl shadow-glass p-6 md:p-8 min-w-[320px] max-w-md">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">RZ</div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Rizwan Shaik</h4>
+                                <p class="text-gray-400 text-sm">Senior Software Engineer Colleague</p>
+                                <a href="https://www.linkedin.com/in/rizwan-shaik-44551b40/" target="_blank" rel="noopener" class="text-accent hover:text-accent2 text-sm transition-colors"><i class="fab fa-linkedin mr-1"></i>LinkedIn</a>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 italic testimonial-text">"I had the pleasure of working closely with Nitender on challenging projects. His problem-solving mindset and ability to design scalable architectures were invaluable. Beyond his technical strength, he fostered a collaborative environment where everyone could contribute effectively."</p>
+                    </div>
+                    <div class="testimonial-card bg-white/10 backdrop-blur-md rounded-xl shadow-glass p-6 md:p-8 min-w-[320px] max-w-md">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">AD</div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Arnab Das</h4>
+                                <p class="text-gray-400 text-sm">Product Marketing & GTM Colleague</p>
+                                <a href="https://www.linkedin.com/in/arnab-d-846970192/" target="_blank" rel="noopener" class="text-accent hover:text-accent2 text-sm transition-colors"><i class="fab fa-linkedin mr-1"></i>LinkedIn</a>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 italic testimonial-text">"Working with Nitender was always easy and rewarding. He listens carefully, keeps the customer's perspective at the center, and builds solutions that make sense not just technically but also for the people who use them. His thoughtful approach made it simple to connect our product and marketing goals with what he delivered."</p>
+                    </div>
+                    <!-- Duplicates removed; JS handles seamless looping by cloning the track at runtime -->
                 </div>
             </div>
         </section>
 
+        <!-- Section Separator -->
+        <div class="section-separator"></div>
+
+        <!-- Skills & Expertise -->
+        <section class="mb-16">
+            <div class="text-center mb-8">
+                <div class="inline-block mb-6">
+                    <span class="px-4 py-2 bg-gradient-to-r from-accent/20 to-accent2/20 rounded-full text-accent text-sm font-semibold border border-accent/30">
+                        <i class="fas fa-tools mr-2"></i>Technical Skills
+                    </span>
+                </div>
+                <h2 class="text-4xl font-bold mb-4 gradient-text">Skills & Expertise</h2>
+            </div>
+            <div class="glass rounded-2xl p-8 fade-in-up">
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="text-center group hover:bg-white/5 p-6 rounded-xl transition-all duration-300">
+                        <div class="w-16 h-16 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Data Engineering & AI</h3>
+                        <p class="text-gray-400 text-sm mb-3">Building scalable data pipelines, AI/ML models, and architectures</p>
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">PySpark</span>
+                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">LangChain</span>
+                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">RAG</span>
+                        </div>
+                    </div>
+                    <div class="text-center group hover:bg-white/5 p-6 rounded-xl transition-all duration-300">
+                        <div class="w-16 h-16 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Cloud Architecture</h3>
+                        <p class="text-gray-400 text-sm mb-3">Designing and implementing cloud-native solutions</p>
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">AWS</span>
+                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">Lambda</span>
+                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">K8s</span>
+                        </div>
+                    </div>
+                    <div class="text-center group hover:bg-white/5 p-6 rounded-xl transition-all duration-300">
+                        <div class="w-16 h-16 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Team Leadership</h3>
+                        <p class="text-gray-400 text-sm mb-3">Mentoring and leading technical teams</p>
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">Mentoring</span>
+                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">Agile</span>
+                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">Strategy</span>
+                        </div>
+                    </div>
+                    <div class="text-center group hover:bg-white/5 p-6 rounded-xl transition-all duration-300">
+                        <div class="w-16 h-16 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-2">Analytics</h3>
+                        <p class="text-gray-400 text-sm mb-3">Transforming data into actionable insights using AI and ML</p>
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">MLOps</span>
+                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">Real-time</span>
+                            <span class="px-2 py-1 bg-accent/20 text-accent text-xs rounded-full">Predictive</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Separator -->
+        <div class="section-separator"></div>
+
+        <!-- Fun Facts / Outside Work Section -->
+        <section class="mb-16">
+            <div class="text-center mb-8">
+                <div class="inline-block mb-6">
+                    <span class="px-4 py-2 bg-gradient-to-r from-accent/20 to-accent2/20 rounded-full text-accent text-sm font-semibold border border-accent/30">
+                        <i class="fas fa-lightbulb mr-2"></i>Beyond Work
+                    </span>
+                </div>
+                <h2 class="text-4xl font-bold mb-4 gradient-text">Fun Facts & Interests</h2>
+            </div>
+            <div class="glass rounded-2xl p-8 fade-in-up">
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center p-6 hover:bg-white/5 rounded-xl transition-all duration-300 group">
+                        <div class="w-16 h-16 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-book-reader"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Continuous Learner</h3>
+                        <p class="text-gray-400 text-sm">Always exploring new technologies, reading technical blogs, and staying updated with industry trends</p>
+                    </div>
+                    <div class="text-center p-6 hover:bg-white/5 rounded-xl transition-all duration-300 group">
+                        <div class="w-16 h-16 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Mentoring</h3>
+                        <p class="text-gray-400 text-sm">Passionate about sharing knowledge and helping others grow in their data engineering journey</p>
+                    </div>
+                    <div class="text-center p-6 hover:bg-white/5 rounded-xl transition-all duration-300 group">
+                        <div class="w-16 h-16 bg-gradient-to-r from-accent to-accent2 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-white mb-2">Problem Solving</h3>
+                        <p class="text-gray-400 text-sm">Enjoy tackling complex challenges and finding elegant solutions to real-world problems</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Separator -->
+        <div class="section-separator"></div>
+
         <!-- Call to Action -->
-        <section class="text-center fade-in-up">
-            <div class="glass rounded-2xl p-8">
-                <h2 class="text-3xl font-bold text-accent2 mb-4">Let's Work Together</h2>
-                <p class="text-gray-300 mb-6 max-w-2xl mx-auto">
-                    I'm always interested in new opportunities and exciting projects. Whether you're looking for a data science solution or want to discuss potential collaboration, I'd love to hear from you.
+        <section class="text-center fade-in-up relative overflow-hidden">
+            <!-- Background decorations -->
+            <div class="absolute inset-0 opacity-5 pointer-events-none">
+                <div class="animated-bg-element w-64 h-64 bg-accent top-10 right-10"></div>
+                <div class="animated-bg-element w-48 h-48 bg-accent2 bottom-20 left-20" style="animation-delay: -7s;"></div>
+            </div>
+
+            <div class="glass rounded-2xl p-8 md:p-12 relative z-10">
+                <div class="inline-block mb-6">
+                    <span class="px-4 py-2 bg-gradient-to-r from-accent/20 to-accent2/20 rounded-full text-accent text-sm font-semibold border border-accent/30">
+                        <i class="fas fa-handshake mr-2"></i>Let's Connect
+                    </span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-4">Let's Work Together</h2>
+                <p class="text-gray-300 mb-8 max-w-2xl mx-auto text-lg">
+                    I'm always interested in new opportunities and exciting projects. Whether you're looking for a data engineering solution or want to discuss potential collaboration, I'd love to hear from you.
                 </p>
+                
+                <!-- Quick Info -->
+                <div class="grid md:grid-cols-3 gap-4 mb-8 max-w-3xl mx-auto">
+                    <div class="glass rounded-lg p-4 border border-accent/20">
+                        <i class="fas fa-briefcase text-accent text-xl mb-2"></i>
+                        <p class="text-sm text-gray-300">Open to Opportunities</p>
+                    </div>
+                    <div class="glass rounded-lg p-4 border border-accent/20">
+                        <i class="fas fa-users text-accent text-xl mb-2"></i>
+                        <p class="text-sm text-gray-300">Open to Collaborations</p>
+                    </div>
+                    <div class="glass rounded-lg p-4 border border-accent/20">
+                        <i class="fas fa-chalkboard-teacher text-accent text-xl mb-2"></i>
+                        <p class="text-sm text-gray-300">Open to Mentoring</p>
+                    </div>
+                </div>
+
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="contact.html" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-accent to-accent2 text-white rounded-lg font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all cta-button">
                         <i class="fas fa-envelope"></i>
                         Get In Touch
                     </a>
-                    <a href="../assets/Avik%20Biswas_Resume_V2.pdf" download="Avik_Biswas_Principal_Data_Scientist_Resume.pdf" class="inline-flex items-center gap-2 px-8 py-4 bg-white/10 text-white rounded-lg font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all border border-white/20">
+                    <a href="../assets/Avik_Biswas_Resume.pdf" download="Avik_Biswas_Resume.pdf" class="inline-flex items-center gap-2 px-8 py-4 bg-white/10 text-white rounded-lg font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all border border-white/20 hover:border-accent/40">
                         <i class="fas fa-download"></i>
                         Download Resume
                     </a>
@@ -612,14 +1056,11 @@
                         Avik Biswas
                     </h3>
                     <p class="text-gray-400 mb-4 max-w-md">
-                        Principal Data Scientist focused on AI/ML for telematics and analytics, delivering measurable outcomes for fleets and enterprises.
+                        Principal Data Scientist with 15+ years experience in AI/ML, Data Science, and Advanced Analytics. Specialized in IoT/Telematics, Predictive Modeling, and GenAI solutions.
                     </p>
                     <div class="flex gap-4">
-                        <a href="https://linkedin.com/in/avik-biswas-stats" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                        <a href="https://linkedin.com/in/avik-biswas-stats" class="w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform hover:bg-[#005885]" style="background-color: #0077b5;">
                             <i class="fab fa-linkedin text-white"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                            <i class="fab fa-github text-white"></i>
                         </a>
                     </div>
                 </div>
@@ -631,7 +1072,7 @@
                         <li><a href="about.html" class="text-gray-400 hover:text-accent transition-colors">About Me</a></li>
                         <li><a href="../index.html#projects" class="text-gray-400 hover:text-accent transition-colors">Projects</a></li>
                         <li><a href="contact.html" class="text-gray-400 hover:text-accent transition-colors">Contact</a></li>
-                        <li><a href="fun-zone.html" class="text-gray-400 hover:text-accent transition-colors">Tech Playground</a></li>
+                        <li><a href="tech-playground.html" class="text-gray-400 hover:text-accent transition-colors">Tech Playground</a></li>
                     </ul>
                 </div>
                 
@@ -653,7 +1094,7 @@
                         </li>
                         <li class="flex items-center gap-2">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Bangalore, India</span>
+                            <span>Bengaluru, India</span>
                         </li>
                     </ul>
                 </div>
@@ -663,10 +1104,10 @@
             <div class="border-t border-gray-800 pt-8 mt-8 text-center">
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <p class="text-gray-400 text-sm">
-                        © 2025 Nitender Kumar. Built with ❤️ using modern web technologies.
+                        © 2025 Avik Biswas. Built with ❤️ using modern web technologies.
                     </p>
                     <div class="flex gap-4 mt-4 md:mt-0">
-                        <a href="../assets/Avik%20Biswas_Resume_V2.pdf" download="Avik_Biswas_Principal_Data_Scientist_Resume.pdf" class="text-accent hover:text-accent2 text-sm transition-colors">
+                        <a href="../assets/Avik_Biswas_Resume.pdf" download="Avik_Biswas_Resume.pdf" class="text-accent hover:text-accent2 text-sm transition-colors">
                             <i class="fas fa-download mr-1"></i>Download Resume
                         </a>
                         <span class="text-gray-600">|</span>
@@ -681,41 +1122,47 @@
 
     <!-- JavaScript -->
     <script>
-        // Theme management
-        function applyTheme(theme) {
-            const body = document.body;
-            const btn = document.getElementById('globalThemeToggle');
-            if (theme === 'light') {
-                body.classList.remove('dark');
-                body.classList.add('light');
-                if (btn) {
-                    btn.innerHTML = '<i class="fas fa-sun"></i>';
-                }
-            } else {
-                body.classList.remove('light');
-                body.classList.add('dark');
-                if (btn) {
-                    btn.innerHTML = '<i class="fas fa-moon"></i>';
+        // Theme dropdown toggle function
+        function toggleThemeDropdown() {
+            const dropdown = document.getElementById('theme-dropdown');
+            const btn = document.getElementById('theme-switcher-btn');
+            if (dropdown && btn) {
+                const isOpen = dropdown.classList.contains('show');
+                dropdown.classList.toggle('show');
+                btn.setAttribute('aria-expanded', !isOpen);
+                if (!isOpen) {
+                    setTimeout(() => {
+                        document.addEventListener('click', function closeDropdown(e) {
+                            if (!dropdown.contains(e.target) && !btn.contains(e.target)) {
+                                dropdown.classList.remove('show');
+                                btn.setAttribute('aria-expanded', 'false');
+                                document.removeEventListener('click', closeDropdown);
+                            }
+                        });
+                    }, 0);
                 }
             }
-            localStorage.setItem('theme', theme);
         }
-
-        // Initialize theme
-        (function() {
-            applyTheme('dark');
-        })();
-
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const dropdown = document.getElementById('theme-dropdown');
+                const btn = document.getElementById('theme-switcher-btn');
+                if (dropdown && dropdown.classList.contains('show')) {
+                    dropdown.classList.remove('show');
+                    if (btn) btn.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+        
+        // Theme management
         document.addEventListener('DOMContentLoaded', function() {
-            // Theme toggle
-            const themeBtn = document.getElementById('globalThemeToggle');
-            if (themeBtn) {
-                themeBtn.addEventListener('click', function() {
-                    if (document.body.classList.contains('dark')) {
-                        applyTheme('light');
-                    } else {
-                        applyTheme('dark');
-                    }
+            // Scroll progress indicator
+            const scrollProgress = document.getElementById('scrollProgress');
+            if (scrollProgress) {
+                window.addEventListener('scroll', () => {
+                    const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    const scrolled = (window.scrollY / windowHeight) * 100;
+                    scrollProgress.style.width = scrolled + '%';
                 });
             }
 
@@ -780,7 +1227,7 @@
                         <i class="fas fa-envelope"></i>
                         Open Email Client
                     </button>
-                    <button onclick="openLinkedIn()" class="w-full flex items-center justify-center gap-3 px-4 py-3 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors">
+                    <button onclick="openLinkedIn()" class="w-full flex items-center justify-center gap-3 px-4 py-3 text-white rounded-lg transition-colors hover:bg-[#005885]" style="background-color: #0077b5;">
                         <i class="fab fa-linkedin"></i>
                         Connect on LinkedIn
                     </button>
@@ -858,7 +1305,7 @@
                         <i class="fas fa-envelope"></i>
                         Open Email Client
                     </button>
-                    <button onclick="openLinkedIn()" class="w-full flex items-center justify-center gap-3 px-4 py-3 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-colors">
+                    <button onclick="openLinkedIn()" class="w-full flex items-center justify-center gap-3 px-4 py-3 text-white rounded-lg transition-colors hover:bg-[#005885]" style="background-color: #0077b5;">
                         <i class="fab fa-linkedin"></i>
                         Connect on LinkedIn
                     </button>
